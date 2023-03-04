@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar'
+import Table from "../components/Table";
 import '../css/snapshots.css'
 import '../css/tabs.css'
 
@@ -51,9 +52,9 @@ function Snapshots() {
             toggleTab(1);
           }}
           >
-            <div>
+            <p>
               All
-            </div>
+            </p>
           </div>
 
           <div className={toggleState === 1 ? "tabs-topic active-tabs-topic" : "tabs-topic"}
@@ -61,9 +62,9 @@ function Snapshots() {
             toggleTab(1);
           }}
           >
-            <div>
+            <p>
               Accepted
-            </div>
+            </p>
           </div>
 
           <div className={toggleState === 1 ? "tabs-topic active-tabs-topic" : "tabs-topic"}
@@ -71,15 +72,16 @@ function Snapshots() {
             toggleTab(1);
           }}
           >
-            <div>
+            <p>
               Rejected
-            </div>
+            </p>
           </div>
         </div>
 
         <div className='snapshot-table-container'>
           <div className='snapshot-table'>
             {/* Implementation will be here */}
+            <Table/>
           </div>
         </div>
 

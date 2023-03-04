@@ -6,6 +6,7 @@
     align-content: center;
   }
   .tabs-topic{
+    height: 45px;
     font-size: 1.2rem;
     justify-content: center;
     align-content: center;
@@ -14,19 +15,25 @@
     background-color: #F2F1F1;
     position: relative;
     margin: 0;
-    width: 10rem;
+    width: 30px;
     /* width: 50%; */
     border: 1px solid #d3d3d3;
     padding: 10px;
+  }
 
+  .tabs-topic p {
+    font-weight: 400;
+    padding-top: 2px;
+    font-size: 1.05rem;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   .tabs-topic:nth-child(1) {
-    border-radius: 25px 0 0 25px;
+    border-radius: 15px 0 0 15px;
   }
 
   .tabs-topic:nth-child(3) {
-    border-radius: 0 25px 25px 0 ;
+    border-radius: 0 15px 15px 0 ;
   }
 
   .tabs-topic div {
