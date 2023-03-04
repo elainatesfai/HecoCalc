@@ -1,0 +1,81 @@
+.tcontainer{
+    display:flex;
+    margin: 20px;
+    justify-content: center;
+}
+
+.table-box1{
+    
+    text-align: center;
+    width: 200px;
+    height: 100px;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    
+}
+
+.table-box2{
+    
+    text-align: center;
+    width: 600px;
+    height: 50px;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    
+}
+
+.t-input{
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(232, 232, 232, 1);
+    border-style: solid;
+    border-width: 1px;
+    height: 30px;
+    width: 80px;
+    
+    
+}
+
+.btn-probabilities{
+    border-radius: 10px;
+    background-color: rgba(180, 240, 186, 1);
+    border: none;
+    height: 20px;
+    width: 100px;
+    margin: 2px;
+}
+
+.btn-interventions{
+    border-radius: 10px;
+    background-color: rgb(191, 198, 207);
+    border: none;
+    height: 20px;
+    width: 100px;
+    margin: 2px;
+}
+
+.btn-cost{
+    border-radius: 10px;
+    background-color: rgb(190, 92, 67);
+    border: none;
+    height: 20px;
+    width: 100px;
+    margin: 2px;
+}
+
+.btn-qalys{
+    border-radius: 10px;
+    background-color: rgb(180, 211, 240);
+    border: none;
+    height: 20px;
+    width: 100px;
+    margin: 2px;
+}
+
+.btn-labels{
+    border-radius: 10px;
+    background-color: rgb(240, 219, 180);
+    border: none;
+    height: 20px;
+    width: 100px;
+    margin: 2px;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tree from "react-d3-tree";
 import "../css/decisiontree.css";
 import treeData from "../json/treeData.json";
+import TreeCostProb from "../components/TreeCostProb";
 import Navbar from "../components/Navbar";
 import EditTree from "../components/EditTree";
 import {
@@ -225,6 +226,9 @@ export default function TreeGraph() {
   return (
     <>
       <Navbar />
+      <div id="prob-cost-table">
+        <TreeCostProb/>
+      </div>
       <div id="treeWrapper">
         <div className="tree">
           <Tree

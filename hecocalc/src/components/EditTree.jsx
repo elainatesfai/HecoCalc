@@ -382,15 +382,12 @@ export default function EditTree({
     },
     cells: {
       style: {
-        display: "flex",
-        justifyContent: "flex-end",
-        "&:not(:last-of-type)": {
-          justifyContent: "flex-start",
-          paddingRight: "0",
+        display: "grid",
+        justifyContent: "center"
+        
         },
       },
-    },
-  };
+    }
 
   return (
     <div className={open ? "collapse-tree" : "table-container"}>
