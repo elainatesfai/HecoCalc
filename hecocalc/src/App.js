@@ -70,6 +70,7 @@ function App() {
                 alert(err.message || JSON.stringify(err));
                 return;
               }
+              console.log(userData);
               var bucket = userData.UserAttributes[4].Value;
               var idToken = session.idToken.jwtToken;
 
@@ -108,6 +109,28 @@ function App() {
     });
   };
 
+  const getUserDetails = async () => {
+    return await new Promise((resolve,reject) => {
+      const user = Pool.getCurrentUser();
+      if(user){
+        user.getSession((err,session) => {
+          if(err){
+            reject();
+          }
+          else{
+            user.getUserData(function (err,userData){
+              if (err) {
+                alert(err.message || JSON.stringify(err));
+                return;
+              }
+              resolve(userData);
+            })
+          }
+        })
+      }
+    })
+  }
+
   return (
     <div>
     <main>
@@ -118,6 +141,7 @@ function App() {
         repositories: repositories,
         getRepo: getRepo,
         repoName: repoName,
+        getUserDetails: getUserDetails,
       }}/>
     </main>
     </div>

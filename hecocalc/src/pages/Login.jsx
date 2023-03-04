@@ -14,6 +14,7 @@ function Login() {
   const [error,setError] = useState(false);
   const authenticate = useOutletContext().authenticate;
   const getRepo = useOutletContext().getRepo;
+  const getUserDetails = useOutletContext().getUserDetails;
   var repositories = getRepo();
   const getRepositories = useOutletContext().getRepositories;
   const getSession = useOutletContext().getSession;
@@ -64,10 +65,19 @@ function Login() {
     event.preventDefault();
     authenticate(email,password)
     .then(data => {
-      console.log(data);
-      getRepositories().then(x => {
-        navigate('/loginsettings');
-    });
+      getUserDetails()
+        .then(details => {
+          if(details.UserAttributes[2].Value === '3'){
+            navigate('/dashboard');
+          }
+          else{
+            getRepositories().then(x => {
+              navigate('/loginsettings');
+          });
+
+          }
+        })
+      
     })
     .catch(err => {
       console.log(err);
