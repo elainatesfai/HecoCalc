@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../components/Navbar'
 import Table from "../components/Table";
+import '../css/uploadsnapshotmodel.css'
 import '../css/snapshots.css'
 import '../css/tabs.css'
 
@@ -11,6 +12,8 @@ async function getS3Data() {
     // accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
     // secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
     // region: process.env.REACT_APP_AWS_REGION
+
+    // This should not be hardcoded -> but .env is not working
 
     accessKeyId: "AKIASDINEJ4Y2BGNFONK",
     secretAccessKey: "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",
@@ -24,11 +27,14 @@ async function getS3Data() {
     const dataPromises = s3Response.Contents.filter(item => !item.Key.endsWith('/')).map(async item => {
       const nameParts = item.Key.split('/');
       const name = nameParts[nameParts.length - 1].split('.')[0];
+
+      // Tags on files
       const taggingResponse = await s3.getObjectTagging({ Bucket: bucket, Key: item.Key }).promise();
       const statusTag = taggingResponse.TagSet.find(tag => tag.Key === 'status');
       const status = statusTag ? statusTag.Value : '';
       const uploadedByTag = taggingResponse.TagSet.find(tag => tag.Key === 'uploadedby');
       const uploadedBy = uploadedByTag ? uploadedByTag.Value : '';
+
       return {
         date: item.LastModified.toLocaleDateString(),
         name: name,
@@ -44,6 +50,7 @@ async function getS3Data() {
   }
 }
 
+// filter tabs section
 function filterDataByStatus(status, data) {
   if (status === "All") {
     return data;
@@ -55,7 +62,20 @@ function filterDataByStatus(status, data) {
 function Snapshots(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleState, setToggleState] = useState("All");
-  const [tempList, setTempList] = useState([]);
+  
+  const setCloseClass = useState("Close Unclicked");
+  const setLoginModalClass = useState("Modal Hidden");
+  const [isModalClicked, setIsModalClicked] = useState(false);
+
+  const updateModal = () => {
+    if (!isModalClicked) {
+      setCloseClass("Close Clicked");
+      setLoginModalClass("Modal Visible");
+    } else {
+      setCloseClass("Close Unlicked");
+      setLoginModalClass("Modal Hidden");
+    }
+  };
 
   const toggleTab = (status) => {
     setToggleState(status);
@@ -89,6 +109,14 @@ function Snapshots(props) {
       <div className="grid-container">
         <div className="header">
           <div className="header-title">My snapshots</div>
+
+          <button
+            className="button-generate"
+            onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
+            >
+            Upload
+          </button>
+
         </div>
 
         <div className="bloc-tabs-topic">
@@ -120,9 +148,43 @@ function Snapshots(props) {
       {/* ... */}
       <Table data={sortedData}  />
       {/* ... */}
-
-
       </div>
+
+      <form
+        id="upload-modal"
+        className={isModalClicked ? "modal" : "modal-hidden"}
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <span
+              className="close"
+              onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
+            >
+              &times;
+            </span>
+            <h2>User Login</h2>
+          </div>
+          <div className="modal-body">
+            <p>PDFs will be saved locally, snaphots will be submitted to S3.</p>
+            <div className="modal-input-container">
+              <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." />
+            </div>
+            <div className="modal-btn-container">
+              <button
+                className="modal-btn"
+              >
+                Submit Snapshot
+              </button>
+              <button
+                className="modal-btn"
+              >
+                Save as PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+
     </>
   )
 }
