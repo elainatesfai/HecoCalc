@@ -15,8 +15,8 @@ function filterDataByStatus(status, data) {
 function Snapshots() {
   const data = [
     { date: '13/01/2023', name: 'diabetes-snapshot-v3', status: 'Rejected', by: 'john@gmail.com' },
-    { date: '12/01/2023', name: 'diabetes-snapshot-v2', status: 'Approved', by: 'john@gmail.com' },
     { date: '11/01/2023', name: 'diabetes-snapshot-v1', status: '', by: 'john@gmail.com' },
+    { date: '12/01/2023', name: 'diabetes-snapshot-v2', status: 'Approved', by: 'john@gmail.com' }
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,7 +31,11 @@ function Snapshots() {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log('filteredData: ', filteredData);
+  const sortedData = filteredData.sort((a, b) => {
+    const aDate = new Date(a.date.split('/').reverse().join('-'));
+    const bDate = new Date(b.date.split('/').reverse().join('-'));
+    return bDate - aDate;
+  });
 
   return (
     <>
@@ -70,7 +74,7 @@ function Snapshots() {
         </div>
       </div>
       {/* ... */}
-      <Table data={filteredData} />
+      <Table data={sortedData}  />
       {/* ... */}
 
 
