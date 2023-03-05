@@ -160,9 +160,10 @@ function Snapshots(props) {
               className="close"
               onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
             >
-              &times;
+              {/* &times; */}
+              <i className='fas fa-close' />
             </span>
-            <h2>User Login</h2>
+            <h2>Save Snapshots</h2>
           </div>
           <div className="modal-body">
             <p>PDFs will be saved locally, snaphots will be submitted to S3.</p>
