@@ -15,6 +15,10 @@ async function getS3Data() {
 
     // This should not be hardcoded -> but .env is not working
 
+    // Next thing should filter data list again-> 
+    // if in pending status only show if email logged into, is the same as by
+
+
     accessKeyId: "AKIASDINEJ4Y2BGNFONK",
     secretAccessKey: "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",
     region: "eu-west-2"
@@ -168,7 +172,8 @@ function Snapshots(props) {
           <div className="modal-body">
             <p>PDFs will be saved locally, snaphots will be submitted to S3.</p>
             <div className="modal-input-container">
-              <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." />
+            <input id="file-input" name="file" placeholder="Enter snapshot name..."/>
+              {/* <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." /> */}
             </div>
             <div className="modal-btn-container">
               <button
