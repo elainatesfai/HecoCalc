@@ -111,10 +111,12 @@ function Login() {
               sx={style}
               onChange={(event) => setEmail(event.target.value)}
             />
+            
             <TextField
               id="standard-basic"
               label="Enter Password..."
               variant="standard"
+              type="password"
               value={password}
               sx={style}
               onChange={(event) => setPassword(event.target.value)}
