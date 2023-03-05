@@ -32,7 +32,7 @@
   border-radius: 10px 0 0 10px;
 }
 
-.tabs-topic:nth-child(3) {
+.tabs-topic:last-child {
   border-radius: 0 10px 10px 0;
 }
 
