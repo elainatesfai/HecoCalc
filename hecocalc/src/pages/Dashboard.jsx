@@ -55,7 +55,7 @@ function GraphsDashboard({
       </div>
       <div className="GridLineAndScatter">
         <div className="grid-itemscatter">
-          <ScatterPlot />
+          <Tornado />
         </div>
         <div className="grid-itemline">
           <Linechart />
@@ -64,9 +64,7 @@ function GraphsDashboard({
         <hr className="horizontalLine" />
       </div>
 
-      {/* <div className="grid-itemtornado">
-        <Tornado />
-      </div> */}
+      
     </>
   );
 }

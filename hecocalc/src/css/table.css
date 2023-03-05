@@ -1,0 +1,45 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 2px solid white;
+}
+
+th {
+  background-color: white;
+  /* border-radius: 5px; */
+}
+
+th:nth-child(2), td:nth-child(2) {
+  width: 60%;
+}
+
+th:nth-child(1), td:nth-child(1),
+th:nth-child(3), td:nth-child(3),
+th:nth-child(4), td:nth-child(4) {
+  width: 13.33%;
+}
+
+tr {
+  background-color: #F2F1F1;
+}
+
+.td-approved {
+  color: #31D716;
+}
+
+.td-rejected {
+  color: red;
+}
+
+/* tr:nth-child(even) {
+  background-color: #f2f2f2;
+} */
+
+tr:hover {
+  background-color: #ddd;
+}

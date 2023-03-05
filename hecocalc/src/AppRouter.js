@@ -9,6 +9,7 @@ import LoginSettings from "./pages/SettingsPage";
 import Snapshots from "./pages/Snapshots";
 import { useState } from "react";
 import App from "./App";
+import Settings from "./pages/Settings";
 
 function AppRouter() {
   const [iterationNum, setIterationNum] = useState(0);
@@ -57,6 +58,7 @@ function AppRouter() {
           />
         </Route>
         <Route path='/snapshots' element={<Snapshots/>} />
+        <Route path='/settings' element={<Settings/>} />
       </Routes>
     </Router>
   );
