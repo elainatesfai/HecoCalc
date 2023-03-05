@@ -30,6 +30,7 @@ function Uploads() {
       ACL: "public-read",
       Body: file,
       Bucket: 'alancompany/Snapshots',
+      Bucket: 'alancompany/TreeSpecs',
       Key: file.name,
       Metadata: {
         'x-amz-meta-uploadedby': 'john@gmail.com',

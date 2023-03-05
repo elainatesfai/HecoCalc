@@ -15,6 +15,10 @@ async function getS3Data() {
 
     // This should not be hardcoded -> but .env is not working
 
+    // Next thing should filter data list again-> 
+    // if in pending status only show if email logged into, is the same as by
+
+
     accessKeyId: "AKIASDINEJ4Y2BGNFONK",
     secretAccessKey: "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",
     region: "eu-west-2"
