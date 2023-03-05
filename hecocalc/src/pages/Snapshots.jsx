@@ -21,26 +21,28 @@ async function getS3Data() {
 
   try {
     const s3Response = await s3.listObjectsV2({ Bucket: bucket, Prefix: prefix }).promise();
-    const data = s3Response.Contents.map(item => {
+    const dataPromises = s3Response.Contents.filter(item => !item.Key.endsWith('/')).map(async item => {
       const nameParts = item.Key.split('/');
       const name = nameParts[nameParts.length - 1].split('.')[0];
+      const taggingResponse = await s3.getObjectTagging({ Bucket: bucket, Key: item.Key }).promise();
+      const statusTag = taggingResponse.TagSet.find(tag => tag.Key === 'status');
+      const status = statusTag ? statusTag.Value : '';
+      const uploadedByTag = taggingResponse.TagSet.find(tag => tag.Key === 'uploadedby');
+      const uploadedBy = uploadedByTag ? uploadedByTag.Value : '';
       return {
         date: item.LastModified.toLocaleDateString(),
         name: name,
-        status: '',
-        by: null
-        // item.Metadata.uploadedby
-
+        status: status,
+        by: uploadedBy
       };
     });
+    const data = await Promise.all(dataPromises);
     return data;
   } catch (error) {
     console.error(error);
     return [];
   }
 }
-
-console.log(process.env)
 
 function filterDataByStatus(status, data) {
   if (status === "All") {
