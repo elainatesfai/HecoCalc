@@ -35,7 +35,7 @@ export default function TableOption2() {
   const betaVar = "Beta";
   const nVar = "N";
 
-  const transitionProb = [
+  const [transitionProb, setTransitionProb] = useState([
     {
       id: 0,
       name: fChild(),
@@ -72,7 +72,7 @@ export default function TableOption2() {
       id: 8,
       name: ssffChild() + " - " + ssChild(),
     },
-  ];
+  ]);
 
   const utilities = [
     { id: 0, name: "QoL Dead" },
@@ -139,6 +139,18 @@ export default function TableOption2() {
     })
   );
 
+  const [uciVal, setUciVal] = useState(
+    transitionProb.map((item, key) => {
+      return jStat.beta.inv(0.975, alphaChange[key], beta[key]);
+    })
+  );
+
+  const [se, setSe] = useState(
+    transitionProb.map((item, key) => {
+      return (uciVal[key] - lciVal[key]) / 3.92;
+    })
+  );
+
   const updateValues = () => {
     setAlpha(
       transitionProb.map((item) => {
@@ -160,12 +172,44 @@ export default function TableOption2() {
         return jStat.beta.inv(0.025, alphaChange[key], beta[key]);
       })
     );
+    setUciVal(
+      transitionProb.map((item, key) => {
+        return jStat.beta.inv(0.975, alphaChange[key], beta[key]);
+      })
+    );
     setProbValue(
       transitionProb.map((item, key) => {
         return jStat.beta.inv(Math.random(), alphaChange[key], beta[key]);
       })
     );
+    setSe(
+      transitionProb.map((item, key) => {
+        return (uciVal[key] - lciVal[key]) / 3.92;
+      })
+    );
+    window.location.reload(false);
   };
+
+  // const addRow = () => {
+  //   if (transitionProb.length === 9) {
+  //     transitionProb.push({ id: 9, name: "New Row" });
+  //     updateValues();
+  //   }
+  //   document.getElementById("addRow").disabled = true;
+  //   document.getElementById("removeRow").disabled = false;
+  // };
+
+  // const removeRow = () => {
+  //   if (transitionProb.length === 10) {
+  //     setTransitionProb(transitionProb.splice(0, transitionProb.length - 1));
+  //     setProbValue(probValue.splice(0, probValue.length - 1));
+  //     setLciVal(lciVal.splice(0, lciVal.length - 1));
+  //     setAlpha(alpha.splice(0, alpha.length - 1));
+  //     setBeta(beta.splice(0, beta.length - 1));
+  //   }
+  //   document.getElementById("addRow").disabled = false;
+  //   document.getElementById("removeRow").disabled = true;
+  // };
 
   return (
     <>
@@ -187,7 +231,9 @@ export default function TableOption2() {
               {transitionProb.map((prob) => {
                 return (
                   <div className="label-container">
-                    <label htmlFor="">{prob.name}</label>
+                    <label htmlFor="" contentEditable={true}>
+                      {prob.name}
+                    </label>
                   </div>
                 );
               })}
@@ -246,18 +292,13 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{seVar}</label>
-              {transitionProb.map((item) => {
+              {se.map((item) => {
                 return (
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "tpSe")
-                      }
+                      readOnly={true}
+                      value={Math.round(item * 1000) / 1000}
                     />
                   </div>
                 );
@@ -279,10 +320,14 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{uciVar}</label>
-              {transitionProb.map((item) => {
+              {uciVal.map((item) => {
                 return (
                   <div>
-                    <input type="number" readOnly={true} value={value.prob} />
+                    <input
+                      type="number"
+                      readOnly={true}
+                      value={Math.round(item * 1000) / 1000}
+                    />
                   </div>
                 );
               })}
@@ -349,6 +394,12 @@ export default function TableOption2() {
             </div>
           </div>
         </div>
+        {/* <button id="addRow" onClick={() => addRow()}>
+          Add Row
+        </button>
+        <button id="removeRow" onClick={() => removeRow()}>
+          Remove Row
+        </button> */}
         <button onClick={() => updateValues()}>Update</button>
 
         <div className="table">
