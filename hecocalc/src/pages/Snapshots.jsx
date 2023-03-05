@@ -168,7 +168,8 @@ function Snapshots(props) {
           <div className="modal-body">
             <p>PDFs will be saved locally, snaphots will be submitted to S3.</p>
             <div className="modal-input-container">
-              <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." />
+            <input id="file-input" name="file" placeholder="Enter snapshot name..."/>
+              {/* <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." /> */}
             </div>
             <div className="modal-btn-container">
               <button
