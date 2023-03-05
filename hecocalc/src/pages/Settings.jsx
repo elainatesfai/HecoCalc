@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
+import DecisionTreeTab from "../components/DecisionTreeTab";
+import InputDataTab from "../components/InputDataTab";
 import "../css/tabs.css";
 import "../css/settings.css";
 
@@ -9,6 +11,10 @@ function Settings() {
   const toggleTab = (tab) => {
     setToggleState(tab);
   };
+
+  const activeTabComponent = toggleState === "Decision Tree"
+    ? <DecisionTreeTab />
+    : <InputDataTab />;
 
   return (
     <>
@@ -46,7 +52,7 @@ function Settings() {
           </div>
         </div>
         <div className="active-tab">
-          <p>Active Tab Component: {toggleState}</p>
+          {activeTabComponent}
         </div>
       </div>
     </>
