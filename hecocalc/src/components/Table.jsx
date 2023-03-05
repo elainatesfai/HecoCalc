@@ -1,13 +1,7 @@
 import React from 'react';
 import '../css/table.css';
 
-function Table() {
-  const data = [
-    { date: '13/01/2023', name: 'diabetes-snapshot-v3', status: 'Rejected', by: 'john@gmail.com' },
-    { date: '12/01/2023', name: 'diabetes-snapshot-v2', status: 'Approved', by: 'john@gmail.com' },
-    { date: '11/01/2023', name: 'diabetes-snapshot-v1', status: '', by: 'john@gmail.com' },
-  ];
-
+function Table({ data }) {
   function getStatusClassName(status) {
     switch (status) {
       case 'Approved':
