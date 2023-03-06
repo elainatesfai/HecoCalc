@@ -88,3 +88,21 @@
 .recharts-wrapper {
   position: fixed;
 }
+
+
+
+@media only screen and (device-width: 768px) {
+  /* default iPad screens */
+
+
+}
+
+@media screen and (max-width: 480px) {
+  .grid-itemline {
+    width: 50%px;
+  }
+
+  .grid-itemtornado {
+    width: 100px;
+  }
+}

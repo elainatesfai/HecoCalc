@@ -1,32 +1,61 @@
 import React from "react";
+// import {
+//   Chart,
+//   CommonSeriesSettings,
+//   Legend,
+//   SeriesTemplate,
+//   Animation,
+//   ValueAxis,
+//   Tooltip,
+//   Size,
+//   AxisTitle,
+//   Label,
+//   Format,
+//   AdaptiveLayout,
+// } from "devextreme-react/chart";
 import {
-  Chart,
-  CommonSeriesSettings,
-  Legend,
-  SeriesTemplate,
-  Animation,
-  ValueAxis,
+  LineChart,
+  CartesianGrid,
+  CartesianAxis,
+  BarChart,
+  Bar,
+  LabelList,
+  XAxis,
+  YAxis,
   Tooltip,
-  Size,
-  AxisTitle,
-  Label,
-  Format,
-  AdaptiveLayout,
-} from "devextreme-react/chart";
+  Legend,
+  ResponsiveContainer,
+  
+} from "recharts";
 import data from "../json/tornado-data.json";
 
 //palette specifies the colors for the chart
 var palette = ["#2F75B5", "#EC7D31"];
+const labels = ["Hospitalisation", "NeuroResponse"];
+const sortedData = data.sort((a, b) => a.category.localeCompare(b.category));
 
 class Tornado extends React.Component {
   //Defines the min and max of the axis
   visualRange = [0, 3500];
 
+  
+
   render() {
     return (
       <div style={{ textAlign: "center" }}>
         <h3 style={{ fontSize: "24px" }}>Tornado diagram (ICER)</h3>
-        <Chart
+        <ResponsiveContainer width="99%" aspect={1}>
+        <BarChart width={730} height={500} data={sortedData} layout="vertical">
+  <CartesianGrid strokeDasharray="3 3" />
+  <YAxis dataKey="yAxisLabel" type="category" />
+  <XAxis type="number" domain={[-3000, 3000]} baseValue={1800} />
+  <Tooltip />
+  <Legend />
+  <Bar dataKey="start" fill="#8884d8" baseValue={1800}/>
+  <Bar dataKey="end" fill="#82ca9d" />
+</BarChart>
+</ResponsiveContainer>
+        {/* <Chart
           id="chart"
           dataSource={data}
           barGroupPadding={0.2}
@@ -34,10 +63,12 @@ class Tornado extends React.Component {
           palette={palette}
         >
           <AdaptiveLayout width={400} height={400} />
-          <Size height={700} />
+          <Size 
+          height={700} 
+          />
           {/* The tornado diagram is created as a bar range chart, 
           the following takes the defined ranges from the json file */}
-          <CommonSeriesSettings
+          {/* <CommonSeriesSettings
             type="rangeBar"
             format="currency"
             argumentField="yAxisLabel"
@@ -56,8 +87,8 @@ class Tornado extends React.Component {
             //Sets the axis range from 0,3500 (visualRange)
             defaultVisualRange={this.visualRange}
             tickInterval={500}
-          >
-            <AxisTitle text={"ICER"} width={100} />
+          > */}
+            {/* <AxisTitle text={"ICER"} width={100} />
             <Label>
               <Format type="currency" currency={"GBP"} />
             </Label>
@@ -66,8 +97,8 @@ class Tornado extends React.Component {
           <Tooltip enabled={true} />
 
           <SeriesTemplate nameField="category" />
-          <Animation enabled={false} />
-        </Chart>
+          <Animation enabled={false} /> */}
+        {/* </Chart>  */}
       </div>
     );
   }
