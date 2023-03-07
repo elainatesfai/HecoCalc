@@ -55,7 +55,7 @@ export default function TreeGraph() {
     "tpValue: " + ffChild() + " - " + fChild()
   );
 
-  //First child's first child's first child  
+  //First child's first child's first child
   const prob3 = localStorage.getItem(
     "tpValue: " + fffChild() + " - " + ffChild() + " - " + fChild()
   );
@@ -80,11 +80,11 @@ export default function TreeGraph() {
     "tpValue: " + sffChild() + " - " + ssChild() + " - " + sChild()
   );
 
-  //First child's first child's first child's first child  
+  //First child's first child's first child's first child
   const prob8 = localStorage.getItem(
     "tpValue: " + sfffChild() + " - " + sfChild()
   );
-    
+
   const prob9 = localStorage.getItem(
     "tpValue: " + ssffChild() + " - " + ssChild()
   );
@@ -241,7 +241,7 @@ export default function TreeGraph() {
     <>
       <Navbar />
       <div id="prob-cost-table">
-        <TreeCostProb/>
+        <TreeCostProb />
       </div>
       <div id="treeWrapper">
         <div className="tree">
