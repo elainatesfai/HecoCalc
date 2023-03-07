@@ -382,9 +382,7 @@ export default function TableOption2() {
               {transitionProb.map((prob) => {
                 return (
                   <div className="label-container">
-                    <label htmlFor="" contentEditable={true}>
-                      {prob.name}
-                    </label>
+                    <label>{prob.name}</label>
                   </div>
                 );
               })}
@@ -931,6 +929,7 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
+                      readOnly={true}
                       value={localStorage.getItem("dValue: " + item.name)}
                     />
                   </div>
@@ -1013,7 +1012,9 @@ export default function TableOption2() {
             </div>
           </div>
         </div>
-        <button onClick={() => updateValues()}>Update</button>
+        <button className="update" onClick={() => updateValues()}>
+          Update
+        </button>
       </div>
     </>
   );
