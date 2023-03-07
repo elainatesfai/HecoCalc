@@ -29,8 +29,8 @@ function Uploads() {
     const params = {
       ACL: "public-read",
       Body: file,
-      Bucket: 'alancompany/Snapshots',
-      Bucket: 'alancompany/TreeSpecs',
+      Bucket: 'alancompany/alancompany/Snapshots',
+      Bucket: 'alancompany/alancompany/TreeSpecs',
       Key: file.name,
       Metadata: {
         'x-amz-meta-uploadedby': 'john@gmail.com',

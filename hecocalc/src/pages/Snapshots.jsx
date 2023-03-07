@@ -24,7 +24,7 @@ async function getS3Data() {
     region: "eu-west-2"
   });
   const bucket = 'alancompany';
-  const prefix = 'Snapshots/';
+  const prefix = 'alancompany/Snapshots/';
 
   try {
     const s3Response = await s3.listObjectsV2({ Bucket: bucket, Prefix: prefix }).promise();

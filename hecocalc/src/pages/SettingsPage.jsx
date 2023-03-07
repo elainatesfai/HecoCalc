@@ -26,8 +26,8 @@ export default function Settings() {
   repositories.map((item) => {
     let arr = item.Key.split("/");
     if (arr.length > 0) {
-      if (choices.includes(arr[1]) === false) {
-        choices.push(arr[1]);
+      if (choices.includes(arr[2]) === false) {
+        choices.push(arr[2]);
       }
     }
   });
