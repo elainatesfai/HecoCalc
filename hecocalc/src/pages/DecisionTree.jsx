@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tree from "react-d3-tree";
 import "../css/decisiontree.css";
 import treeData from "../json/treeData.json";
+import TreeCostProb from "../components/TreeCostProb";
 import Navbar from "../components/Navbar";
 import EditTree from "../components/EditTree";
 import {
@@ -54,7 +55,7 @@ export default function TreeGraph() {
     "tpValue: " + ffChild() + " - " + fChild()
   );
 
-  //First child's first child's first child
+  //First child's first child's first child  
   const prob3 = localStorage.getItem(
     "tpValue: " + fffChild() + " - " + ffChild() + " - " + fChild()
   );
@@ -79,11 +80,11 @@ export default function TreeGraph() {
     "tpValue: " + sffChild() + " - " + ssChild() + " - " + sChild()
   );
 
-  //First child's first child's first child's first child
+  //First child's first child's first child's first child  
   const prob8 = localStorage.getItem(
     "tpValue: " + sfffChild() + " - " + sfChild()
   );
-
+    
   const prob9 = localStorage.getItem(
     "tpValue: " + ssffChild() + " - " + ssChild()
   );
@@ -239,6 +240,9 @@ export default function TreeGraph() {
   return (
     <>
       <Navbar />
+      <div id="prob-cost-table">
+        <TreeCostProb/>
+      </div>
       <div id="treeWrapper">
         <div className="tree">
           <Tree
