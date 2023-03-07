@@ -1,11 +1,15 @@
 #treeWrapper {
   height: 100vh;
   overflow: hidden;
+  background-color: #FBFBFC;
+
+ 
 }
 
 .tree {
   height: 100%;
   overflow: hidden;
+  transform: translateY(45%);
 }
 
 .node__branch {
@@ -93,4 +97,10 @@
 
 .node__branch .rd3t-label__attributes tspan:nth-of-type(3) {
   display: none;
+}
+
+#prob-cost-table{
+  position:absolute;
+  top: 25px;
+  width: 100%;
 }

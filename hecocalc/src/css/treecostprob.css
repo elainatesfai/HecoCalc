@@ -1,9 +1,19 @@
 .tcontainer{
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
     display:flex;
-    margin: 20px;
+    margin-top: 30px;
+    margin-left: 80px;
     justify-content: center;
+    font-size: small;
+    background-color: white;
+    
 }
 
+.table-box0{
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
 .table-box1{
     
     text-align: center;
@@ -11,7 +21,7 @@
     height: 100px;
     border-collapse: collapse;
     border-spacing: 1px;
-    
+   
 }
 
 .table-box2{
@@ -21,61 +31,109 @@
     height: 50px;
     border-collapse: collapse;
     border-spacing: 1px;
+
     
 }
 
+.table-box3{
+    text-align: center;
+    width: 600px;
+    height: 90px;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    
+}
 .t-input{
-    background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(232, 232, 232, 1);
+    background-color: #fbfbfc;
+    border-color: #E8E8E8;
     border-style: solid;
     border-width: 1px;
     height: 30px;
-    width: 80px;
+    width: 110px;
     
     
 }
 
+
 .btn-probabilities{
-    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
     background-color: rgba(180, 240, 186, 1);
     border: none;
-    height: 20px;
+    height: 25px;
     width: 100px;
     margin: 2px;
+    font-weight: bold;
 }
 
 .btn-interventions{
-    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    border-radius:20px;
     background-color: rgb(191, 198, 207);
     border: none;
-    height: 20px;
+    height: 25px;
     width: 100px;
     margin: 2px;
+    font-weight: bold;
 }
 
 .btn-cost{
-    border-radius: 10px;
-    background-color: rgb(190, 92, 67);
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
+    background-color: rgb(255, 188, 188);
     border: none;
-    height: 20px;
+    height: 25px;
     width: 100px;
     margin: 2px;
+    font-weight: bold;
 }
 
 .btn-qalys{
-    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
     background-color: rgb(180, 211, 240);
     border: none;
-    height: 20px;
+    height: 25px;
     width: 100px;
     margin: 2px;
+    font-weight: bold;
+
+}
+.btn-cost-qalys{
+    font-family: 'Inter', sans-serif;
+    border-radius: 20px;
+    background-color: rgb(255, 218, 177);
+    border: none;
+    height: 25px;
+    width: 100px;
+    margin: 2px;
+    font-weight: bold;
+
 }
 
 .btn-labels{
-    border-radius: 10px;
+   font-family: 'Inter', sans-serif;
+    border-radius: 20px;
     background-color: rgb(240, 219, 180);
     border: none;
-    height: 20px;
-    width: 100px;
+    height: 25px;
+    width: 120px;
     margin: 2px;
+    font-weight: bold;
+
 }
+
+.Link{
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    height: 50px;
+    width: fit-content;
+    text-decoration: underline;
+    border:none;
+    background-color: white;
+  
+}
+
+
+
+
