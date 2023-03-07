@@ -80,6 +80,7 @@ function Login() {
       
     })
     .catch(err => {
+      setError(true);
       console.log(err);
     })
 
