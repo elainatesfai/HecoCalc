@@ -1,7 +1,7 @@
 #treeWrapper {
   height: 100vh;
   overflow: hidden;
-  background-color: #FBFBFC;
+  background-color: white;;
 
  
 }
@@ -9,7 +9,8 @@
 .tree {
   height: 100%;
   overflow: hidden;
-  transform: translateY(45%);
+  transform: translateY(35%);
+  background-color: #F9FAFB;
 }
 
 .node__branch {
@@ -103,4 +104,5 @@
   position:absolute;
   top: 25px;
   width: 100%;
+  
 }

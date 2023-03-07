@@ -1,6 +1,18 @@
 import DataTable, { createTheme } from "react-data-table-component";
 import treecostprob from "../css/treecostprob.css"
 import React, {useState} from "react";
+import {
+  fChild,
+  ffChild,
+  fffChild,
+  fsChild,
+  sChild,
+  sfChild,
+  ssChild,
+  sffChild,
+  sfffChild,
+  ssffChild,
+} from "../data/ChildrenData";
 
 export default function TreeCostProb(){
 
@@ -33,6 +45,8 @@ const buttonlabels = [
   "DIGITAL",
   "Current pathway"
 ]
+
+const probDead1 = parseFloat(fChild()) * parseFloat(ffChild()) * parseFloat(fffChild());
 
 
 
@@ -73,7 +87,7 @@ const buttonlabels = [
             {/* Trying to map an array that will contain formulas to calculate designated cells */}
             {/* {body.map((values,valueID) =><TableRow rowContent={values} key={valueID}/> )} */}
             {/* The above goes inside the following class. This "body" will have formulas for each in there. These have been mentioned above under body */}
-            <td className="t-input"></td>   
+            <td className="t-input">{probDead1}</td>   
           </tr>
           ))}
           <tr style={{ height: '10px' }}></tr> 
