@@ -60,9 +60,9 @@
     border-radius: 20px;
     background-color: rgba(180, 240, 186, 1);
     border: none;
-    height: 25px;
-    width: 100px;
-    margin: 2px;
+    height: 20px;
+    width: 110px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -71,9 +71,9 @@
     border-radius:20px;
     background-color: rgb(191, 198, 207);
     border: none;
-    height: 25px;
-    width: 100px;
-    margin: 2px;
+    height: 20px;
+    width: 110px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -82,9 +82,9 @@
     border-radius: 20px;
     background-color: rgb(255, 188, 188);
     border: none;
-    height: 25px;
-    width: 100px;
-    margin: 2px;
+    height: 20px;
+    width: 80px;
+    margin-bottom: 10px;
     font-weight: bold;
 }
 
@@ -93,9 +93,9 @@
     border-radius: 20px;
     background-color: rgb(180, 211, 240);
     border: none;
-    height: 25px;
-    width: 100px;
-    margin: 2px;
+    height: 20px;
+    width: 90px;
+    margin-bottom: 10px;
     font-weight: bold;
 
 }
@@ -104,9 +104,9 @@
     border-radius: 20px;
     background-color: rgb(255, 218, 177);
     border: none;
-    height: 25px;
+    height: 20px;
     width: 100px;
-    margin: 2px;
+    margin-bottom: 10px;
     font-weight: bold;
 
 }
@@ -114,11 +114,11 @@
 .btn-labels{
    font-family: 'Inter', sans-serif;
     border-radius: 20px;
-    background-color: rgb(240, 219, 180);
+    background-color: #FFDAB1;
     border: none;
-    height: 25px;
-    width: 120px;
-    margin: 2px;
+    height: 20px;
+    float:right;
+    margin-right: 5px;
     font-weight: bold;
 
 }

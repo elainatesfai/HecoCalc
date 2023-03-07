@@ -45,9 +45,10 @@ const buttonlabels = [
       
       <table className="table-box0">
         
-        {buttonlabels.map((label)=>(
-        <tr>
-          <td><button className="btn-labels">{label}</button></td>
+        {buttonlabels.map((label, index)=>(
+        <tr key={index}>
+          <td>
+            <button className="btn-labels" style={{width: (index ===0) ? '80px' : '120px'}}>{label}</button></td>
         </tr>
         ))}
       </table>  
@@ -75,8 +76,9 @@ const buttonlabels = [
             <td className="t-input"></td>   
           </tr>
           ))}
-          {column1.map((label)=> (
-          <tr>
+          <tr style={{ height: '10px' }}></tr> 
+          {column1.map((label, index)=> (
+          <tr key={index}>
             <td></td>
             <td className="t-input">{label}</td>
             <td className="t-input"></td>
