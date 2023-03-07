@@ -10,6 +10,7 @@ import Snapshots from "./pages/Snapshots";
 import { useState } from "react";
 import App from "./App";
 import Settings from "./pages/Settings";
+import ManagerSelection from "./pages/managerSelection";
 
 function AppRouter() {
   const [iterationNum, setIterationNum] = useState(0);
@@ -37,6 +38,7 @@ function AppRouter() {
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
           <Route path="/loginsettings" element={<LoginSettings />} />
+          <Route path="/managerselect" element={<ManagerSelection />} />
           <Route
             path="/dashboard"
             element={

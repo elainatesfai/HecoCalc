@@ -11,14 +11,13 @@ import { useOutletContext } from 'react-router-dom';
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  var position = useOutletContext().position;
   const navigate = useNavigate();
   const [error,setError] = useState(false);
   const authenticate = useOutletContext().authenticate;
-  const getRepo = useOutletContext().getRepo;
+  const getCompanies = useOutletContext().getCompanies;
   const getUserDetails = useOutletContext().getUserDetails;
-  var repositories = getRepo();
   const getRepositories = useOutletContext().getRepositories;
-  const getSession = useOutletContext().getSession;
   const navigateToHome = () => {
     navigate("/dashboard");
   };
@@ -68,11 +67,17 @@ function Login() {
     .then(data => {
       getUserDetails()
         .then(details => {
-          if(details.UserAttributes[2].Value === '3'){
-            navigate('/dashboard');
+          position = details.UserAttributes[2].Value;
+          if(position === '3'){
+            getCompanies().then(x => {
+              console.log(x);
+              navigate('/managerselect');
+            })
+
           }
           else{
             getRepositories().then(x => {
+              console.log(x);
               navigate('/loginsettings');
           });
 
