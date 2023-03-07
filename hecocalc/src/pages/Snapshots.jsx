@@ -5,24 +5,22 @@ import '../css/uploadsnapshotmodel.css'
 import '../css/snapshots.css'
 import '../css/tabs.css'
 
-import { S3 } from 'aws-sdk';
+import AWS from 'aws-sdk';
+
+
+const accessId = process.env.REACT_APP_ACCESS_ID;
+const accessKey = process.env.REACT_APP_ACCESS_KEY;
+const s3Bucket = "alancompany";
+const region = "eu-west-2"
+
 
 async function getS3Data() {
-  const s3 = new S3({
-    // accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-    // secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-    // region: process.env.REACT_APP_AWS_REGION
-
-    // This should not be hardcoded -> but .env is not working
-
-    // Next thing should filter data list again-> 
-    // if in pending status only show if email logged into, is the same as by
-
-
-    accessKeyId: "AKIASDINEJ4Y2BGNFONK",
-    secretAccessKey: "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",
-    region: "eu-west-2"
-  });
+    // create S3 client instance
+    const s3 = new AWS.S3({
+      accessKeyId: accessId,
+      secretAccessKey: accessKey,
+      region: region
+    });
   const bucket = 'alancompany';
   const prefix = 'Snapshots/';
 
@@ -66,6 +64,9 @@ function filterDataByStatus(status, data) {
 function Snapshots(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleState, setToggleState] = useState("All");
+
+  // Declaring role
+  const [userRole, setUserRole] = useState("analyst"); // new state for user role
   
   const setCloseClass = useState("Close Unclicked");
   const setLoginModalClass = useState("Modal Hidden");
@@ -114,12 +115,15 @@ function Snapshots(props) {
         <div className="header">
           <div className="header-title">My snapshots</div>
 
-          <button
-            className="button-generate"
-            onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
+          
+          {userRole === "analyst" ? ( // display button only for analyst role
+            <button
+              className="button-generate"
+              onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
             >
-            Upload
-          </button>
+              Upload
+            </button>
+          ) : null} {/* don't display button for manager role */}
 
         </div>
 
