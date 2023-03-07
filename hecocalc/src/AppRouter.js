@@ -19,7 +19,17 @@ function AppRouter() {
   const [appropriateTreatment, setAppropriateTreatment] = useState(
     localStorage.getItem("tpValue: AEAT - DIGITAL") * 100
   );
-  const [hospitalWithDigital, setHospitalWithDigital] = useState(0);
+  const [hospitalWithDigital, setHospitalWithDigital] = useState(
+    100 *
+      (1 -
+        parseFloat(
+          localStorage.getItem("tpValue: Hospital Adm - AEAT - DIGITAL")
+        ) /
+          parseFloat(
+            localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL")
+          ))
+  );
+  // parseInt(localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL"))-((parseInt(localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL"))*(())))
   const [serviceWithDigital, setServiceWithDigital] = useState(0);
   return (
     <Router>
@@ -57,8 +67,8 @@ function AppRouter() {
             }
           />
         </Route>
-        <Route path='/snapshots' element={<Snapshots/>} />
-        <Route path='/settings' element={<Settings/>} />
+        <Route path="/snapshots" element={<Snapshots />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );

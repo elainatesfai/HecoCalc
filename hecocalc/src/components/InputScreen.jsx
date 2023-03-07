@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "../css/inputscreen.css";
 
 export default function InputScreen({
@@ -15,6 +15,26 @@ export default function InputScreen({
     change(e.target.value);
     localStorage.setItem("tpValue: " + item, e.target.value / 100);
   };
+
+  const handleChange2 = (e, change, item, item2) => {
+    change(e.target.value);
+    localStorage.setItem(
+      "tpValue: " + item,
+      parseFloat(localStorage.getItem("tpValue: " + item2)) -
+        parseFloat(localStorage.getItem("tpValue: " + item2)) *
+          (e.target.value / 100)
+    );
+    console.log(localStorage.getItem("tpValue: " + item));
+  };
+
+  console.log(
+    parseFloat(localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL")) -
+      parseFloat(
+        localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL")
+      ) *
+        (50 / 100)
+  );
+
   return (
     <div className="input-screen-container">
       <h1>MODEL INPUT PARAMETERS</h1>
@@ -64,7 +84,14 @@ export default function InputScreen({
               min={0}
               name="hospitalWithDigital"
               value={hospitalWithDigital}
-              onChange={(e) => setHospitalWithDigital(e.target.value)}
+              onChange={(e) =>
+                handleChange2(
+                  e,
+                  setHospitalWithDigital,
+                  "Hospital Adm - AEAT - DIGITAL",
+                  "Hospital Adm - IEAT - DIGITAL"
+                )
+              }
             />
             %
           </div>
