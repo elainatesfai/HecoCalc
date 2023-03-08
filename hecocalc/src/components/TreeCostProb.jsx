@@ -93,7 +93,7 @@ export default function TreeCostProb() {
           {column1.map((label, index) => (
             <tr key={index}>
               <td></td>
-              <td className="t-input">{label}</td>
+              <td className="t-input" style={{padding: '10px'}}>{label}</td>
               <td className="t-input">{index === 0 ? totalAEATDead : totalAEATAlive}</td>
             </tr>
           ))}
@@ -101,7 +101,7 @@ export default function TreeCostProb() {
           {column1.map((label, index) => (
             <tr key={index}>
               <td></td>
-              <td className="t-input">{label}</td>
+              <td className="t-input" style={{padding: '10px'}}>{label}</td>
               <td className="t-input">{index === 0 ? totalCpDead : totalCpAlive}</td>
             </tr>
           ))}

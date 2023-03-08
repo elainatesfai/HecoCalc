@@ -19,6 +19,7 @@
   height: 100px;
   border-collapse: collapse;
   border-spacing: 1px;
+  margin-right: 20px;
 }
 
 .table-box2 {
@@ -27,6 +28,8 @@
   height: 50px;
   border-collapse: collapse;
   border-spacing: 1px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .table-box3 {
@@ -35,6 +38,7 @@
   height: 90px;
   border-collapse: collapse;
   border-spacing: 1px;
+  margin-left: 20px;
 }
 .t-input {
   background-color: #fbfbfc;
