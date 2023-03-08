@@ -1,6 +1,6 @@
 import DataTable, { createTheme } from "react-data-table-component";
 import "../css/treecostprob.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   fChild,
   ffChild,
@@ -13,6 +13,7 @@ import {
   sfffChild,
   ssffChild,
 } from "../data/ChildrenData";
+
 
 export default function TreeCostProb() {
   const [pIsOpen, probIsOpen] = useState(false);
@@ -33,10 +34,28 @@ export default function TreeCostProb() {
   const column2 = ["Digital", "Current pathway"];
 
   const buttonlabels = ["DIGITAL", "Current pathway"];
+  const [tpValue, setTpValue] = useState('');
 
-  const probDead1 =
-    parseFloat(fChild()) * parseFloat(ffChild()) * parseFloat(fffChild());
+  //calculation for the DIGITAL AEAT - Hospital adm - Dead
+  const digitalValue = localStorage.getItem('tpValue: DIGITAL');
+  const digitalAEAT = localStorage.getItem('tpValue: AEAT - DIGITAL');
+  const hospitalAEAT = localStorage.getItem('tpValue: Hospital Adm - AEAT - DIGITAL');
+  const deadValue = localStorage.getItem('tpValue: Dead - AEAT');
+  const totalAEATDead = (digitalValue*digitalAEAT*hospitalAEAT*deadValue).toFixed(4);
+  const aliveValue = 1 - deadValue;
 
+  //calculation for the DIGITAL AEAT - Hospital adm - Alive
+  const totalAEATAlive = (digitalValue*digitalAEAT*hospitalAEAT*aliveValue).toFixed(4);
+
+  //calculation for the Current Pathway - AEAT - Hospital adm - Dead
+  const cpValue = 1- digitalValue; 
+  const cpAEAT = localStorage.getItem('tpValue: AEAT - Current Pathway');
+  const cpHospitalAEAT = localStorage.getItem('tpValue: Hospital Adm - AEAT - Current Pathway');
+  const totalCpDead = (cpValue*cpAEAT*cpHospitalAEAT*deadValue).toFixed(4);
+
+  //calculation for the Current Pathway - AEAT - Hospital adm - Alive
+  const totalCpAlive = (cpValue*cpAEAT*cpHospitalAEAT*aliveValue).toFixed(4);
+  
   return (
     <div className="tcontainer">
       <style>
@@ -71,7 +90,7 @@ export default function TreeCostProb() {
         </thead>
         <tbody>
           {/* column labels Dead Alive*/}
-          {column1.map((label) => (
+          {column1.map((label, index) => (
             <tr>
               <td></td>
               <td className="t-input">{label}</td>
@@ -79,7 +98,7 @@ export default function TreeCostProb() {
               {/* Trying to map an array that will contain formulas to calculate designated cells */}
               {/* {body.map((values,valueID) =><TableRow rowContent={values} key={valueID}/> )} */}
               {/* The above goes inside the following class. This "body" will have formulas for each in there. These have been mentioned above under body */}
-              <td className="t-input">{probDead1}</td>
+              <td className="t-input">{index === 0 ? totalAEATDead : totalAEATAlive}</td>
             </tr>
           ))}
           <tr style={{ height: "10px" }}></tr>
@@ -87,7 +106,7 @@ export default function TreeCostProb() {
             <tr key={index}>
               <td></td>
               <td className="t-input">{label}</td>
-              <td className="t-input"></td>
+              <td className="t-input">{index === 0 ? totalCpDead : totalCpAlive}</td>
             </tr>
           ))}
           <tr>
@@ -153,7 +172,7 @@ export default function TreeCostProb() {
         <tbody>
           <tr>
             <td></td>
-            <td className="t-input"></td>
+            <td className="t-input">{totalAEATDead}</td>
             <td></td>
           </tr>
         </tbody>
