@@ -89,15 +89,11 @@ export default function TreeCostProb() {
           </tr>
         </thead>
         <tbody>
-          {/* column labels Dead Alive*/}
+          
           {column1.map((label, index) => (
-            <tr>
+            <tr key={index}>
               <td></td>
               <td className="t-input">{label}</td>
-
-              {/* Trying to map an array that will contain formulas to calculate designated cells */}
-              {/* {body.map((values,valueID) =><TableRow rowContent={values} key={valueID}/> )} */}
-              {/* The above goes inside the following class. This "body" will have formulas for each in there. These have been mentioned above under body */}
               <td className="t-input">{index === 0 ? totalAEATDead : totalAEATAlive}</td>
             </tr>
           ))}
