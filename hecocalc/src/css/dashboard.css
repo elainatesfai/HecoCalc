@@ -12,7 +12,7 @@
   display: grid;
   place-items: center;
   background-color: #f9f9fb;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(170, 170, 170);
 }
 .ProbabilisticResults {
   width: 100%;

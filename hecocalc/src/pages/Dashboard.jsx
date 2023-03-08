@@ -1,12 +1,13 @@
-import Linechart from "../components/Linechart";
-import ScatterPlot from "../components/ScatterPlot";
-import Tornado from "../components/TornadoDiagram";
+// import Linechart from "../components/Linechart";
+// import ScatterPlot from "../components/ScatterPlot";
+// import Tornado from "../components/TornadoDiagram";
 import InputScreen from "../components/InputScreen";
 import DeterministicResults from "../components/DeterministicResults";
 import ProbabilisticResults from "../components/ProbabilisticResults";
 import RunSimulations from "../components/RunSimulations";
 import Navbar from "../components/Navbar";
 import "../css/dashboard.css";
+import LineAndTornado from "../components/LineAndTornado";
 
 function GraphsDashboard({
   iterationNum,
@@ -53,18 +54,7 @@ function GraphsDashboard({
           </div>
         </div>
       </div>
-      <div className="GridLineAndScatter">
-        <div className="grid-itemscatter">
-          <Tornado />
-        </div>
-        <div className="grid-itemline">
-          <Linechart />
-        </div>
-        {/* <h1 className="heading">One-way sensitivity analysis</h1> */}
-        <hr className="horizontalLine" />
-      </div>
-
-      
+      <LineAndTornado/>    
     </>
   );
 }
