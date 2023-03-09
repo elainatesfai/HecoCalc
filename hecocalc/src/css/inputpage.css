@@ -95,7 +95,7 @@
 }
 
 .columns .label-container {
-  margin-bottom: 11px;
+  margin-bottom: 12px;
 }
 
 .variables input {
@@ -113,4 +113,14 @@
 
 .variables input:focus {
   background-color: white;
+}
+
+.update {
+  background-color: rgba(255, 147, 30, 1);
+  color: white;
+  font-size: 20px;
+  width: 117px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
 }

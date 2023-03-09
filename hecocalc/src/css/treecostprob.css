@@ -1,0 +1,125 @@
+.tcontainer {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  display: flex;
+  margin-top: 30px;
+  margin-left: 80px;
+  justify-content: center;
+  font-size: small;
+  background-color: white;
+}
+
+.table-box0 {
+  padding-bottom: 50px;
+  padding-top: 20px;
+}
+.table-box1 {
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  margin-right: 20px;
+}
+
+.table-box2 {
+  text-align: center;
+  width: 600px;
+  height: 50px;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.table-box3 {
+  text-align: center;
+  width: 600px;
+  height: 90px;
+  border-collapse: collapse;
+  border-spacing: 1px;
+  margin-left: 20px;
+}
+.t-input {
+  background-color: #fbfbfc;
+  border-color: #e8e8e8;
+  border-style: solid;
+  border-width: 1px;
+  height: 30px;
+  width: 110px;
+}
+
+.btn-probabilities {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: rgba(180, 240, 186, 1);
+  border: none;
+  height: 20px;
+  width: 110px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn-interventions {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: rgb(191, 198, 207);
+  border: none;
+  height: 20px;
+  width: 110px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn-cost {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: rgb(255, 188, 188);
+  border: none;
+  height: 20px;
+  width: 80px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn-qalys {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: rgb(180, 211, 240);
+  border: none;
+  height: 20px;
+  width: 90px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.btn-cost-qalys {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: rgb(255, 218, 177);
+  border: none;
+  height: 20px;
+  width: 100px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.btn-labels {
+  font-family: "Inter", sans-serif;
+  border-radius: 20px;
+  background-color: #ffdab1;
+  border: none;
+  height: 20px;
+  float: right;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.Link {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  height: 50px;
+  width: fit-content;
+  text-decoration: underline;
+  border: none;
+  background-color: white;
+}

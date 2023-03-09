@@ -9,6 +9,8 @@ import LoginSettings from "./pages/SettingsPage";
 import Snapshots from "./pages/Snapshots";
 import { useState } from "react";
 import App from "./App";
+import Settings from "./pages/Settings";
+import ManagerSelection from "./pages/managerSelection";
 
 function AppRouter() {
   const [iterationNum, setIterationNum] = useState(0);
@@ -18,7 +20,17 @@ function AppRouter() {
   const [appropriateTreatment, setAppropriateTreatment] = useState(
     localStorage.getItem("tpValue: AEAT - DIGITAL") * 100
   );
-  const [hospitalWithDigital, setHospitalWithDigital] = useState(0);
+  const [hospitalWithDigital, setHospitalWithDigital] = useState(
+    100 *
+      (1 -
+        parseFloat(
+          localStorage.getItem("tpValue: Hospital Adm - AEAT - DIGITAL")
+        ) /
+          parseFloat(
+            localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL")
+          ))
+  );
+  // parseInt(localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL"))-((parseInt(localStorage.getItem("tpValue: Hospital Adm - IEAT - DIGITAL"))*(())))
   const [serviceWithDigital, setServiceWithDigital] = useState(0);
   return (
     <Router>
@@ -26,6 +38,7 @@ function AppRouter() {
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
           <Route path="/loginsettings" element={<LoginSettings />} />
+          <Route path="/managerselect" element={<ManagerSelection />} />
           <Route
             path="/dashboard"
             element={
@@ -56,7 +69,8 @@ function AppRouter() {
             }
           />
         </Route>
-        <Route path='/snapshots' element={<Snapshots/>} />
+        <Route path="/snapshots" element={<Snapshots />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );

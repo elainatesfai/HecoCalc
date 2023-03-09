@@ -29,16 +29,16 @@ function Uploads() {
     const params = {
       ACL: "public-read",
       Body: file,
-      /* Using the constant S3_BUCKET doesn't work -> so I just entered manually bucket name
-      Bucket : S3_BUCKET */
-      Bucket: 'alancompany/Snapshots/',
+      Bucket: 'alancompany/alancompany/Snapshots',
+      Bucket: 'alancompany/alancompany/TreeSpecs',
       Key: file.name,
+      Metadata: {
+        'x-amz-meta-uploadedby': 'john@gmail.com',
+        // Add more metadata properties as needed
+      },
     };
-
+  
     console.log("params", params);
-    // console.log(REGION)
-    console.log("eu-west-2")
-
     myBucket.putObject(params).send((err) => {
       if (err) console.log(err);
     });

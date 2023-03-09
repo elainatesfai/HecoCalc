@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tree from "react-d3-tree";
 import "../css/decisiontree.css";
 import treeData from "../json/treeData.json";
+import TreeCostProb from "../components/TreeCostProb";
 import Navbar from "../components/Navbar";
 import EditTree from "../components/EditTree";
 import {
@@ -47,7 +48,7 @@ export default function TreeGraph() {
   };
 
   // FIRST CHILD
-  const [prob1, setProb1] = useLocalStorage("tpValue: DIGITAL");
+  const prob1 = localStorage.getItem("tpValue: " + fChild());
 
   //First child's first child
   const prob2 = localStorage.getItem(
@@ -88,125 +89,139 @@ export default function TreeGraph() {
     "tpValue: " + ssffChild() + " - " + ssChild()
   );
 
-  const cost1 =
-    changedData[0].children[0].children[0].children[0].attributes.Cost;
+  const cost1 = localStorage.getItem("cValue: " + fffChild());
 
-  const cost2 = changedData[0].children[0].attributes.Cost;
+  const cost2 = localStorage.getItem("cValue: " + fChild());
 
-  const cost3 = changedData[0].children[1].attributes.Cost;
+  const cost3 = localStorage.getItem("cValue: " + sChild());
 
-  const cost4 = changedData[0].children[0].children[0].attributes.Cost;
+  const cost4 = localStorage.getItem("cValue: Drug - " + ffChild());
 
-  const cost5 = changedData[0].children[0].children[1].attributes.Cost;
+  const cost5 = localStorage.getItem("cValue: Drug - " + fsChild());
 
-  const days1 =
-    changedData[0].children[0].children[0].children[0].attributes.days;
-  const days2 =
-    changedData[0].children[0].children[1].children[0].attributes.days;
-  const days3 = changedData[0].children[0].children[0].attributes.days;
-  const days4 = changedData[0].children[0].children[1].attributes.days;
+  const days1 = localStorage.getItem("dValue: LOS - " + ffChild());
+  const days2 = localStorage.getItem("dValue: LOS - " + fsChild());
+  const days3 = localStorage.getItem(
+    "dValue: Total duration of antibiotics (d) - " + ffChild()
+  );
+  const days4 = localStorage.getItem(
+    "dValue: Total duration of antibiotics (d) - " + fsChild()
+  );
 
   //------------------------First Child------------------------
-  changedData[0].children[0].attributes.Prob = prob1;
-  changedData[0].children[1].attributes.Prob = 1 - prob1;
+  changedData[0].children[0].attributes.Prob = Math.round(prob1 * 100) / 100;
+  changedData[0].children[1].attributes.Prob =
+    Math.round((1 - prob1) * 100) / 100;
 
   //------------------------First child's first child------------------------
-  changedData[0].children[0].children[0].attributes.Prob = prob2;
-  changedData[0].children[0].children[1].attributes.Prob = 1 - prob2;
+  changedData[0].children[0].children[0].attributes.Prob =
+    Math.round(prob2 * 100) / 100;
+  changedData[0].children[0].children[1].attributes.Prob =
+    Math.round((1 - prob2) * 100) / 100;
 
   //------------First child's first child's first child------------
-  changedData[0].children[0].children[0].children[0].attributes.Prob = prob3;
+  changedData[0].children[0].children[0].children[0].attributes.Prob =
+    Math.round(prob3 * 100) / 100;
   changedData[0].children[0].children[0].children[1].attributes.Prob =
-    1 - prob3;
+    Math.round((1 - prob3) * 100) / 100;
 
   //------------First child's second child's first child------------
-  changedData[0].children[0].children[1].children[0].attributes.Prob = prob4;
+  changedData[0].children[0].children[1].children[0].attributes.Prob =
+    Math.round(prob4 * 100) / 100;
   changedData[0].children[0].children[1].children[1].attributes.Prob =
-    1 - prob4;
+    Math.round((1 - prob4) * 100) / 100;
 
   //------------Second child's first child------------
-  changedData[0].children[1].children[0].attributes.Prob = prob5;
-  changedData[0].children[1].children[1].attributes.Prob = 1 - prob5;
+  changedData[0].children[1].children[0].attributes.Prob =
+    Math.round(prob5 * 100) / 100;
+  changedData[0].children[1].children[1].attributes.Prob =
+    Math.round((1 - prob5) * 100) / 100;
 
   //------------Second child's first child's first child------------
-  changedData[0].children[1].children[0].children[0].attributes.Prob = prob6;
+  changedData[0].children[1].children[0].children[0].attributes.Prob =
+    Math.round(prob6 * 100) / 100;
   changedData[0].children[1].children[0].children[1].attributes.Prob =
-    1 - prob6;
+    Math.round((1 - prob6) * 100) / 100;
 
   //------------Second child's second child's first child------------
-  changedData[0].children[1].children[1].children[0].attributes.Prob = prob7;
+  changedData[0].children[1].children[1].children[0].attributes.Prob =
+    Math.round(prob7 * 100) / 100;
   changedData[0].children[1].children[1].children[1].attributes.Prob =
-    1 - prob7;
+    Math.round((1 - prob7) * 100) / 100;
 
   //------------Calculating Dead and Alive for first child's first child------------
   changedData[0].children[0].children[0].children[0].children[0].attributes.Prob =
-    prob8;
+    Math.round(prob8 * 100) / 100;
 
   changedData[0].children[0].children[0].children[0].children[1].attributes.Prob =
-    1 - prob8;
+    Math.round((1 - prob8) * 100) / 100;
 
   changedData[0].children[0].children[0].children[1].children[0].attributes.Prob =
-    prob8;
+    Math.round(prob8 * 100) / 100;
 
   changedData[0].children[0].children[0].children[1].children[1].attributes.Prob =
-    1 - prob8;
+    Math.round((1 - prob8) * 100) / 100;
 
   changedData[0].children[1].children[0].children[0].children[0].attributes.Prob =
-    prob8;
+    Math.round(prob8 * 100) / 100;
 
   changedData[0].children[1].children[0].children[0].children[1].attributes.Prob =
-    1 - prob8;
+    Math.round((1 - prob8) * 100) / 100;
 
   changedData[0].children[1].children[0].children[1].children[0].attributes.Prob =
-    prob8;
+    Math.round(prob8 * 100) / 100;
 
   changedData[0].children[1].children[0].children[1].children[1].attributes.Prob =
-    1 - prob8;
+    Math.round((1 - prob8) * 100) / 100;
 
   //------------Calculating Dead and Alive for first child's second child------------
   changedData[0].children[0].children[1].children[0].children[0].attributes.Prob =
-    prob9;
+    Math.round(prob9 * 100) / 100;
 
   changedData[0].children[0].children[1].children[0].children[1].attributes.Prob =
-    1 - prob9;
+    Math.round((1 - prob9) * 100) / 100;
 
   changedData[0].children[0].children[1].children[1].children[0].attributes.Prob =
-    prob9;
+    Math.round(prob9 * 100) / 100;
 
   changedData[0].children[0].children[1].children[1].children[1].attributes.Prob =
-    1 - prob9;
+    Math.round((1 - prob9) * 100) / 100;
 
   changedData[0].children[1].children[1].children[0].children[0].attributes.Prob =
-    prob9;
+    Math.round(prob9 * 100) / 100;
 
   changedData[0].children[1].children[1].children[0].children[1].attributes.Prob =
-    1 - prob9;
+    Math.round((1 - prob9) * 100) / 100;
 
   changedData[0].children[1].children[1].children[1].children[0].attributes.Prob =
-    prob9;
+    Math.round(prob9 * 100) / 100;
 
   changedData[0].children[1].children[1].children[1].children[1].attributes.Prob =
-    1 - prob9;
+    Math.round((1 - prob9) * 100) / 100;
 
   //------------------------COSTS * DAYS------------------------
   changedData[0].children[0].children[0].children[0].attributes.Cost =
-    cost1 * days1;
+    Math.round(cost1 * days1 * 100) / 100;
   changedData[0].children[1].children[0].children[0].attributes.Cost =
-    cost1 * days1;
+    Math.round(cost1 * days1 * 100) / 100;
 
   changedData[0].children[0].children[1].children[0].attributes.Cost =
-    cost1 * days2;
+    Math.round(cost1 * days2 * 100) / 100;
   changedData[0].children[1].children[1].children[0].attributes.Cost =
-    cost1 * days2;
+    Math.round(cost1 * days2 * 100) / 100;
 
   changedData[0].children[0].attributes.Cost = cost2;
   changedData[0].children[1].attributes.Cost = cost3;
 
-  changedData[0].children[0].children[0].attributes.Cost = cost4 * days3;
-  changedData[0].children[1].children[0].attributes.Cost = cost4 * days3;
+  changedData[0].children[0].children[0].attributes.Cost =
+    Math.round(cost4 * days3 * 100) / 100;
+  changedData[0].children[1].children[0].attributes.Cost =
+    Math.round(cost4 * days3 * 100) / 100;
 
-  changedData[0].children[0].children[1].attributes.Cost = cost5 * days4;
-  changedData[0].children[1].children[1].attributes.Cost = cost5 * days4;
+  changedData[0].children[0].children[1].attributes.Cost =
+    Math.round(cost5 * days4 * 100) / 100;
+  changedData[0].children[1].children[1].attributes.Cost =
+    Math.round(cost5 * days4 * 100) / 100;
 
   const [open, setOpen] = useState(false);
 
@@ -225,6 +240,9 @@ export default function TreeGraph() {
   return (
     <>
       <Navbar />
+      <div id="prob-cost-table">
+        <TreeCostProb />
+      </div>
       <div id="treeWrapper">
         <div className="tree">
           <Tree
@@ -248,7 +266,7 @@ export default function TreeGraph() {
           }}
         ></button>
         <div id="sidebar" className={open ? "" : "collapse"}>
-          <EditTree open={open} prob1={prob1} setProb1={setProb1} />
+          <EditTree open={open} prob1={prob1} />
         </div>
       </div>
     </>

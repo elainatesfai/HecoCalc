@@ -10,6 +10,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 //import Settings from '@mui/icons-material/Settings';
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import { useNavigate } from "react-router-dom";
+import zIndex from "@mui/material/styles/zIndex";
 //import Link from '@mui/material';
 
 function Navbar() {
@@ -104,7 +105,7 @@ function Navbar() {
   );
 
   return (
-    <div className="navbar-container">
+    <div className="navbar-container" style={{ zIndex: 10 }}>
       <div className="setting" onClick={() => setOpen(true)}>
         <DensityMediumIcon />
       </div>

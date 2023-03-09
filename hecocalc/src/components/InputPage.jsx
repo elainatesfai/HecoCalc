@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../css/inputpage.css";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -35,7 +35,7 @@ export default function TableOption2() {
   const betaVar = "Beta";
   const nVar = "N";
 
-  const transitionProb = [
+  const [transitionProb, setTransitionProb] = useState([
     {
       id: 0,
       name: fChild(),
@@ -72,7 +72,7 @@ export default function TableOption2() {
       id: 8,
       name: ssffChild() + " - " + ssChild(),
     },
-  ];
+  ]);
 
   const utilities = [
     { id: 0, name: "QoL Dead" },
@@ -80,18 +80,18 @@ export default function TableOption2() {
   ];
 
   const costs = [
-    { id: 0, name: "Hospitalisation Cost" },
-    { id: 1, name: "DIGITAL" },
-    { id: 2, name: "Current Pathway" },
-    { id: 3, name: "Drug AEAT" },
-    { id: 4, name: "Drug IEAT" },
+    { id: 0, name: fffChild() },
+    { id: 1, name: fChild() },
+    { id: 2, name: sChild() },
+    { id: 3, name: "Drug - " + ffChild() },
+    { id: 4, name: "Drug - " + fsChild() },
   ];
 
   const days = [
-    { id: 0, name: "LOS - AEAT" },
-    { id: 1, name: "LOS - IEAT" },
-    { id: 2, name: "Total duration of antibiotics (d) - AEAT" },
-    { id: 3, name: "Total duration of antibiotics (d) - IEAT" },
+    { id: 0, name: "LOS - " + ffChild() },
+    { id: 1, name: "LOS - " + fsChild() },
+    { id: 2, name: "Total duration of antibiotics (d) - " + ffChild() },
+    { id: 3, name: "Total duration of antibiotics (d) - " + fsChild() },
   ];
 
   const [value, setValue] = useState(transitionProb);
@@ -139,6 +139,112 @@ export default function TableOption2() {
     })
   );
 
+  const [uciVal, setUciVal] = useState(
+    transitionProb.map((item, key) => {
+      return jStat.beta.inv(0.975, alphaChange[key], beta[key]);
+    })
+  );
+
+  const [se, setSe] = useState(
+    transitionProb.map((item, key) => {
+      return (uciVal[key] - lciVal[key]) / 3.92;
+    })
+  );
+
+  const [cProbValue, setCProbValue] = useState(
+    costs.map((item, key) => {
+      return (
+        Math.round(
+          jStat.gamma.inv(
+            Math.random(),
+            parseInt(localStorage.getItem("cValue: " + item.name)),
+            1.0
+          ) * 100
+        ) / 100
+      );
+    })
+  );
+
+  const [cUciVal, setCUciVal] = useState(
+    costs.map((item, key) => {
+      return (
+        Math.round(
+          jStat.gamma.inv(
+            0.975,
+            parseInt(localStorage.getItem("cValue: " + item.name)),
+            1.0
+          ) * 1000
+        ) / 1000
+      );
+    })
+  );
+
+  const [cLciVal, setCLciVal] = useState(
+    costs.map((item, key) => {
+      return (
+        Math.round(
+          jStat.gamma.inv(
+            0.025,
+            parseInt(localStorage.getItem("cValue: " + item.name)),
+            1.0
+          ) * 1000
+        ) / 1000
+      );
+    })
+  );
+
+  const [cSe, setCSe] = useState(
+    costs.map((item, key) => {
+      return Math.round(((cUciVal[key] - cLciVal[key]) / 3.92) * 1000) / 1000;
+    })
+  );
+
+  const [dProbValue, setDProbValue] = useState(
+    days.map((item, key) => {
+      return Math.round(
+        jStat.gamma.inv(
+          Math.random(),
+          parseInt(localStorage.getItem("dValue: " + item.name)),
+          1.0
+        )
+      );
+    })
+  );
+
+  const [dUciVal, setDUciVal] = useState(
+    days.map((item, key) => {
+      return (
+        Math.round(
+          jStat.gamma.inv(
+            0.975,
+            parseInt(localStorage.getItem("dValue: " + item.name)),
+            1.0
+          ) * 1000
+        ) / 1000
+      );
+    })
+  );
+
+  const [dLciVal, setDLciVal] = useState(
+    days.map((item, key) => {
+      return (
+        Math.round(
+          jStat.gamma.inv(
+            0.025,
+            parseInt(localStorage.getItem("dValue: " + item.name)),
+            1.0
+          ) * 1000
+        ) / 1000
+      );
+    })
+  );
+
+  const [dSe, setDSe] = useState(
+    days.map((item, key) => {
+      return Math.round(((dUciVal[key] - dLciVal[key]) / 3.92) * 1000) / 1000;
+    })
+  );
+
   const updateValues = () => {
     setAlpha(
       transitionProb.map((item) => {
@@ -160,12 +266,101 @@ export default function TableOption2() {
         return jStat.beta.inv(0.025, alphaChange[key], beta[key]);
       })
     );
-    setProbValue(
+    setUciVal(
       transitionProb.map((item, key) => {
-        return jStat.beta.inv(Math.random(), alphaChange[key], beta[key]);
+        return jStat.beta.inv(0.975, alphaChange[key], beta[key]);
       })
     );
+    setSe(
+      transitionProb.map((item, key) => {
+        return (uciVal[key] - lciVal[key]) / 3.92;
+      })
+    );
+    setCUciVal(
+      costs.map((item, key) => {
+        return (
+          Math.round(
+            jStat.gamma.inv(
+              0.975,
+              parseInt(localStorage.getItem("cValue: " + item.name)),
+              1.0
+            ) * 1000
+          ) / 1000
+        );
+      })
+    );
+    setCLciVal(
+      costs.map((item, key) => {
+        return (
+          Math.round(
+            jStat.gamma.inv(
+              0.025,
+              parseInt(localStorage.getItem("cValue: " + item.name)),
+              1.0
+            ) * 1000
+          ) / 1000
+        );
+      })
+    );
+    setCSe(
+      costs.map((item, key) => {
+        return Math.round(((cUciVal[key] - cLciVal[key]) / 3.92) * 1000) / 1000;
+      })
+    );
+    setDUciVal(
+      days.map((item, key) => {
+        return (
+          Math.round(
+            jStat.gamma.inv(
+              0.975,
+              parseInt(localStorage.getItem("dValue: " + item.name)),
+              1.0
+            ) * 1000
+          ) / 1000
+        );
+      })
+    );
+    setDLciVal(
+      days.map((item, key) => {
+        return (
+          Math.round(
+            jStat.gamma.inv(
+              0.025,
+              parseInt(localStorage.getItem("dValue: " + item.name)),
+              1.0
+            ) * 1000
+          ) / 1000
+        );
+      })
+    );
+    setDSe(
+      days.map((item, key) => {
+        return Math.round(((dUciVal[key] - dLciVal[key]) / 3.92) * 1000) / 1000;
+      })
+    );
+    window.location.reload(false);
   };
+
+  // const addRow = () => {
+  //   if (transitionProb.length === 9) {
+  //     transitionProb.push({ id: 9, name: "New Row" });
+  //     updateValues();
+  //   }
+  //   document.getElementById("addRow").disabled = true;
+  //   document.getElementById("removeRow").disabled = false;
+  // };
+
+  // const removeRow = () => {
+  //   if (transitionProb.length === 10) {
+  //     setTransitionProb(transitionProb.splice(0, transitionProb.length - 1));
+  //     setProbValue(probValue.splice(0, probValue.length - 1));
+  //     setLciVal(lciVal.splice(0, lciVal.length - 1));
+  //     setAlpha(alpha.splice(0, alpha.length - 1));
+  //     setBeta(beta.splice(0, beta.length - 1));
+  //   }
+  //   document.getElementById("addRow").disabled = false;
+  //   document.getElementById("removeRow").disabled = true;
+  // };
 
   return (
     <>
@@ -187,7 +382,7 @@ export default function TableOption2() {
               {transitionProb.map((prob) => {
                 return (
                   <div className="label-container">
-                    <label htmlFor="">{prob.name}</label>
+                    <label>{prob.name}</label>
                   </div>
                 );
               })}
@@ -246,18 +441,13 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{seVar}</label>
-              {transitionProb.map((item) => {
+              {se.map((item) => {
                 return (
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "tpSe")
-                      }
+                      readOnly={true}
+                      value={Math.round(item * 1000) / 1000}
                     />
                   </div>
                 );
@@ -279,10 +469,14 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{uciVar}</label>
-              {transitionProb.map((item) => {
+              {uciVal.map((item) => {
                 return (
                   <div>
-                    <input type="number" readOnly={true} value={value.prob} />
+                    <input
+                      type="number"
+                      readOnly={true}
+                      value={Math.round(item * 1000) / 1000}
+                    />
                   </div>
                 );
               })}
@@ -349,7 +543,12 @@ export default function TableOption2() {
             </div>
           </div>
         </div>
-        <button onClick={() => updateValues()}>Update</button>
+        {/* <button id="addRow" onClick={() => addRow()}>
+          Add Row
+        </button>
+        <button id="removeRow" onClick={() => removeRow()}>
+          Remove Row
+        </button> */}
 
         <div className="table">
           <div className="columns">
@@ -570,8 +769,8 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={10}
-                      min={0}
+                      title=""
+                      placeholder={localStorage.getItem("cValue: " + item.name)}
                       value={value.prob}
                       onChange={(e) =>
                         handleValues(e, item.id, item.name, "cValue")
@@ -583,18 +782,10 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{probVar}</label>
-              {costs.map((item) => {
+              {cProbValue.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={10}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cProbabilistic")
-                      }
-                    />
+                    <input readOnly={true} value={item} />
                   </div>
                 );
               })}
@@ -606,12 +797,8 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cDeterministic")
-                      }
+                      readOnly={true}
+                      value={localStorage.getItem("cValue: " + item.name)}
                     />
                   </div>
                 );
@@ -619,70 +806,40 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{seVar}</label>
-              {costs.map((item) => {
+              {cSe.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cSe")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
             </div>
             <div className="variables">
               <label htmlFor="">{lciVar}</label>
-              {costs.map((item) => {
+              {cLciVal.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cLci")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
             </div>
             <div className="variables">
               <label htmlFor="">{uciVar}</label>
-              {costs.map((item) => {
+              {cUciVal.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cUci")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
             </div>
             <div className="variables">
               <label htmlFor="">{distVar}</label>
-              {costs.map((item) => {
+              {costs.map(() => {
                 return (
                   <div>
-                    <input
-                      type="text"
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cDistribution")
-                      }
-                    />
+                    <input type="text" readOnly={true} value="Gamma" />
                   </div>
                 );
               })}
@@ -694,12 +851,8 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cAlpha")
-                      }
+                      readOnly={true}
+                      value={localStorage.getItem("cValue: " + item.name)}
                     />
                   </div>
                 );
@@ -710,15 +863,7 @@ export default function TableOption2() {
               {costs.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "cBeta")
-                      }
-                    />
+                    <input type="number" readOnly={true} value="1.0" />
                   </div>
                 );
               })}
@@ -757,12 +902,10 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
+                      placeholder={localStorage.getItem("dValue: " + item.name)}
                       value={value.prob}
                       onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eValue")
+                        handleValues(e, item.id, item.name, "dValue")
                       }
                     />
                   </div>
@@ -771,19 +914,10 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{probVar}</label>
-              {days.map((item) => {
+              {dProbValue.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eProbabilistic")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
@@ -795,13 +929,8 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eDeterministic")
-                      }
+                      readOnly={true}
+                      value={localStorage.getItem("dValue: " + item.name)}
                     />
                   </div>
                 );
@@ -809,57 +938,30 @@ export default function TableOption2() {
             </div>
             <div className="variables">
               <label htmlFor="">{seVar}</label>
-              {days.map((item) => {
+              {dSe.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eSe")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
             </div>
             <div className="variables">
               <label htmlFor="">{lciVar}</label>
-              {days.map((item) => {
+              {dLciVal.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eLci")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
             </div>
             <div className="variables">
               <label htmlFor="">{uciVar}</label>
-              {days.map((item) => {
+              {dUciVal.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eUci")
-                      }
-                    />
+                    <input type="number" readOnly={true} value={item} />
                   </div>
                 );
               })}
@@ -869,16 +971,7 @@ export default function TableOption2() {
               {days.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eDistribution")
-                      }
-                    />
+                    <input type="text" readOnly={true} value="Gamma" />
                   </div>
                 );
               })}
@@ -890,13 +983,8 @@ export default function TableOption2() {
                   <div>
                     <input
                       type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eAlpha")
-                      }
+                      readOnly={true}
+                      value={localStorage.getItem("dValue: " + item.name)}
                     />
                   </div>
                 );
@@ -907,16 +995,7 @@ export default function TableOption2() {
               {days.map((item) => {
                 return (
                   <div>
-                    <input
-                      type="number"
-                      step={0.1}
-                      min={0}
-                      max={1}
-                      value={value.prob}
-                      onChange={(e) =>
-                        handleValues(e, item.id, item.name, "eBeta")
-                      }
-                    />
+                    <input type="number" readOnly={true} value="1.0" />
                   </div>
                 );
               })}
@@ -933,6 +1012,9 @@ export default function TableOption2() {
             </div>
           </div>
         </div>
+        <button className="update" onClick={() => updateValues()}>
+          Update
+        </button>
       </div>
     </>
   );

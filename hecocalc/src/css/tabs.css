@@ -1,52 +1,68 @@
 .bloc-tabs-topic {
-    margin-top: -2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-  }
-  .tabs-topic{
-    font-size: 1.2rem;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    cursor: pointer;
-    background-color: #F2F1F1;
-    position: relative;
-    margin: 0;
-    width: 10rem;
-    /* width: 50%; */
-    border: 1px solid #d3d3d3;
-    padding: 10px;
+  margin-top: -2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
 
-  }
+.tabs-topic {
+  height: 45px;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  cursor: pointer;
+  background-color: #F2F1F1;
+  position: relative;
+  margin: 0;
+  flex-grow: 1;
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+}
 
-  .tabs-topic:nth-child(1) {
-    border-radius: 25px 0 0 25px;
-  }
+.tabs-topic p {
+  font-weight: 400;
+  padding-top: 2px;
+  font-size: 1.05rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  .tabs-topic:nth-child(3) {
-    border-radius: 0 25px 25px 0 ;
-  }
+.tabs-topic:nth-child(1) {
+  border-radius: 10px 0 0 10px;
+}
 
-  .tabs-topic div {
-    display:block;
-    padding: 4px;
+.tabs-topic:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.tabs-topic div {
+  display: block;
+  padding: 4px;
+}
+
+.active-tabs-topic {
+  font-size: 1.2rem;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+  position: relative;
+  margin: 0;
+  border-left: 1.5px solid white;
+  border-right: 1.5px solid white;
+  background: #d3d3d3;
+}
+
+.tabs-topic:hover {
+  background-color: #D3D3D3;
+}
+
+/* Media queries */
+@media only screen and (min-width: 768px) {
+  .tabs-topic {
+    flex-grow: 0;
+    width: 150px;
   }
-  
-  .active-tabs-topic  {
-    font-size: 1.2rem;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-    cursor: pointer;
-    color: black;
-    position: relative;
-    width: 10rem;
-    margin: 0;
-    border: 1px solid white;
-  }
-  
-  .tabs-topic:hover{
-    background-color: #D3D3D3;
-  }
+}

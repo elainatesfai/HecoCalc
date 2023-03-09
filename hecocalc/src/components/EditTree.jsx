@@ -39,47 +39,62 @@ export default function EditTree({
 
   const costData = [
     {
-      title: "Hospitalisation cost",
+      title: fffChild(),
       cost: (
         <input
           className="var-inputs"
-          onInput={(e) => setCost1(e.target.value)}
+          placeholder={localStorage.getItem("cValue: " + fffChild())}
+          onInput={(e) => {
+            localStorage.setItem("cValue: " + fffChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "DIGITAL",
+      title: fChild(),
       cost: (
         <input
           className="var-inputs"
-          onInput={(e) => setCost2(e.target.value)}
+          placeholder={localStorage.getItem("cValue: " + fChild())}
+          onInput={(e) => {
+            localStorage.setItem("cValue: " + fChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "Current Pathway",
+      title: sChild(),
       cost: (
         <input
           className="var-inputs"
-          onInput={(e) => setCost3(e.target.value)}
+          placeholder={localStorage.getItem("cValue: " + sChild())}
+          onInput={(e) => {
+            localStorage.setItem("cValue: " + sChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "Drug - AEAT",
+      title: "Drug - " + ffChild(),
       cost: (
         <input
           className="var-inputs"
-          onInput={(e) => setCost4(e.target.value)}
+          placeholder={localStorage.getItem("cValue: Drug - " + ffChild())}
+          onInput={(e) => {
+            localStorage.setItem("cValue: Drug - " + ffChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "Drug - IEAT",
+      title: "Drug - " + fsChild(),
       cost: (
         <input
           className="var-inputs"
-          onInput={(e) => setCost5(e.target.value)}
+          placeholder={localStorage.getItem("cValue: Drug - " + fsChild())}
+          onInput={(e) => {
+            localStorage.setItem("cValue: Drug - " + fsChild(), e.target.value);
+          }}
         />
       ),
     },
@@ -87,7 +102,7 @@ export default function EditTree({
 
   const edColumns = [
     {
-      name: "Event Duration (Days",
+      name: "Event Duration (Days)",
       selector: (row) => row.title,
     },
     {
@@ -97,38 +112,60 @@ export default function EditTree({
 
   const edData = [
     {
-      title: "LOS - AEAT",
+      title: "LOS - " + ffChild(),
       days: (
         <input
           className="var-inputs"
-          onInput={(e) => setDays1(e.target.value)}
+          placeholder={localStorage.getItem("dValue: LOS - " + ffChild())}
+          onInput={(e) => {
+            localStorage.setItem("dValue: LOS - " + ffChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "LOS - IEAT",
+      title: "LOS - " + fsChild(),
       days: (
         <input
           className="var-inputs"
-          onInput={(e) => setDays2(e.target.value)}
+          placeholder={localStorage.getItem("dValue: LOS - " + fsChild())}
+          onInput={(e) => {
+            localStorage.setItem("dValue: LOS - " + fsChild(), e.target.value);
+          }}
         />
       ),
     },
     {
-      title: "Total duration of antibiotics (d) - AEAT",
+      title: "Total duration of antibiotics (d) - " + ffChild(),
       days: (
         <input
           className="var-inputs"
-          onInput={(e) => setDays3(e.target.value)}
+          placeholder={localStorage.getItem(
+            "dValue: Total duration of antibiotics (d) - " + ffChild()
+          )}
+          onInput={(e) => {
+            localStorage.setItem(
+              "dValue: Total duration of antibiotics (d) - " + ffChild(),
+              e.target.value
+            );
+          }}
         />
       ),
     },
     {
-      title: "Total duration of antibiotics (d) - IEAT",
+      title: "Total duration of antibiotics (d) - " + fsChild(),
       days: (
         <input
           className="var-inputs"
-          onInput={(e) => setDays4(e.target.value)}
+          placeholder={localStorage.getItem(
+            "dValue: Total duration of antibiotics (d) - " + fsChild()
+          )}
+          onInput={(e) => {
+            localStorage.setItem(
+              "dValue: Total duration of antibiotics (d) - " + fsChild(),
+              e.target.value
+            );
+          }}
         />
       ),
     },
@@ -382,15 +419,12 @@ export default function EditTree({
     },
     cells: {
       style: {
-        display: "flex",
-        justifyContent: "flex-end",
-        "&:not(:last-of-type)": {
-          justifyContent: "flex-start",
-          paddingRight: "0",
+        display: "grid",
+        justifyContent: "center"
+        
         },
       },
-    },
-  };
+    }
 
   return (
     <div className={open ? "collapse-tree" : "table-container"}>

@@ -1,0 +1,50 @@
+#myTable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#myTable th,
+#myTable td {
+  text-align: left;
+  padding: 8px;
+  border: 2px solid white;
+}
+
+#myTable th {
+  background-color: white;
+  /* border-radius: 5px; */
+}
+
+#myTable th:nth-child(2),
+#myTable td:nth-child(2) {
+  width: 60%;
+}
+
+#myTable th:nth-child(1),
+#myTable td:nth-child(1),
+#myTable th:nth-child(3),
+#myTable td:nth-child(3),
+#myTable th:nth-child(4),
+#myTable td:nth-child(4) {
+  width: 13.33%;
+}
+
+#myTable tr {
+  background-color: #f2f1f1;
+}
+
+#myTable .td-approved {
+  color: #31d716;
+}
+
+#myTable .td-rejected {
+  color: red;
+}
+
+/* tr:nth-child(even) {
+  background-color: #f2f2f2;
+} */
+
+#myTable tr:hover {
+  background-color: #ddd;
+}
