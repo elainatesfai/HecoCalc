@@ -74,7 +74,7 @@ export default function ScatterPlot(data) {
           {/* ZAxis range sets the size of the scatter*/}
           <ZAxis range={[20]} />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-          <Legend layout="centric" verticalAlign="middle" align="right" />
+          {/* <Legend layout="centric" verticalAlign="middle" align="right" /> */}
           <Scatter
             name="PSA Scatter"
             data={data}

@@ -27,7 +27,6 @@ class Tornado extends React.Component {
     return (
       <div style={{ textAlign: "center"}}>
         <h3 style={{ fontSize: "24px" }}>Tornado diagram (ICER)</h3>
-        {/* <ResponsiveBox aspectRatio={1} style={{ width: '100%' }}> */}
         <Chart
           id="chart"
           dataSource={data}
@@ -73,7 +72,6 @@ class Tornado extends React.Component {
           <SeriesTemplate nameField="category" />
           <Animation enabled={false} />
         </Chart>
-        {/* </ResponsiveBox> */}
       </div>
     );
   }
