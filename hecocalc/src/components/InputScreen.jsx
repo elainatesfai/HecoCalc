@@ -41,8 +41,7 @@ export default function InputScreen({
       <div className="container">
         <div className="input-group">
           <p>Digital Probability</p>
-          <h4> </h4> {/*Just to match the spacing on screen*/}
-          <h4> </h4>
+          <input type="range" />
           <div className="input-cont">
             <input
               type="number"
@@ -54,11 +53,11 @@ export default function InputScreen({
                 handleChange(e, setDigitalProbability, "DIGITAL")
               }
             />
-            %
           </div>
         </div>
         <div className="input-group">
           <p>Appropriate Treatment with Digital%</p>
+          <input type="range" />
           <div className="input-cont">
             <input
               type="number"
@@ -70,13 +69,11 @@ export default function InputScreen({
                 handleChange(e, setAppropriateTreatment, "AEAT - DIGITAL")
               }
             />
-            %
           </div>
         </div>
         <div className="input-group">
           <p>Hospital with Digital%</p>
-          <h4> </h4>
-          {/*Just to match the spacing on screen*/}
+          <input type="range" />
           <div className="input-cont">
             <input
               type="number"
@@ -93,13 +90,11 @@ export default function InputScreen({
                 )
               }
             />
-            %
           </div>
         </div>
         <div className="input-group">
           <p>Service with Digital%</p>
-          <h4> </h4>
-          {/*Just to match the spacing on screen*/}
+          <input type="range" />
           <div className="input-cont">
             <input
               type="number"
@@ -109,7 +104,6 @@ export default function InputScreen({
               value={serviceWithDigital}
               onChange={(e) => setServiceWithDigital(e.target.value)}
             />
-            %
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
-import DataTable, { createTheme } from "react-data-table-component";
 import "../css/treecostprob.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   fChild,
   ffChild,
@@ -12,50 +11,87 @@ import {
   sffChild,
   sfffChild,
   ssffChild,
+  ffffChild,
 } from "../data/ChildrenData";
-
 
 export default function TreeCostProb() {
   const [pIsOpen, probIsOpen] = useState(false);
   const [cIsOpen, costIsOpen] = useState(false);
   const column1 = ["Dead", "Alive"];
 
-  // const deadAlive =[
-  //   //DIGIT-AET-HOSPITAL-DEAD , DIGIT-AET-NONHOSPITAL-DEAD , DIGIT-IEET-HOSPITAL-DEAD , DIGIT-IEET-NONHOSPITAL-DEAD
-  //   //DIGIT-AET-HOSPITAL-ALIVE , DIGIT-AET-NONHOSPITAL-ALIVE, DIGIT-IAET-HOSPITAL-ALIVE , DIGIT-IAET-NONHOSPITAL-ALIVE
-  //   //CURRENT-AET-HOSPITAL-DEAD ,CURRENT-AET-NONHOSPITAL-DEAD , CURRENT-IEET-HOSPITAL-DEAD , CURRENT-IEET-NONHOSPITAL-DEAD
-  //   //CURRENT-AET-HOSPITAL-ALIVE , CURRENT-AET-NONHOSPITAL-ALIVE, CURRENT-IAET-HOSPITAL-ALIVE , CURRENT-IAET-NONHOSPITAL-ALIVE
-  // ]
-
-  // const costs=[
-
-  // ]
-
   const column2 = ["Digital", "Current pathway"];
 
   const buttonlabels = ["DIGITAL", "Current pathway"];
-  const [tpValue, setTpValue] = useState('');
 
-  //calculation for the DIGITAL AEAT - Hospital adm - Dead
-  const digitalValue = localStorage.getItem('tpValue: DIGITAL');
-  const digitalAEAT = localStorage.getItem('tpValue: AEAT - DIGITAL');
-  const hospitalAEAT = localStorage.getItem('tpValue: Hospital Adm - AEAT - DIGITAL');
-  const deadValue = localStorage.getItem('tpValue: Dead - AEAT');
-  const totalAEATDead = (digitalValue*digitalAEAT*hospitalAEAT*deadValue).toFixed(4);
-  const aliveValue = 1 - deadValue;
+  const digitalProb = parseFloat(localStorage.getItem("tpValue: " + fChild()));
+  const dAEATProb = parseFloat(
+    localStorage.getItem("tpValue: " + ffChild() + " - " + fChild())
+  );
+  const dAEATHospProb = parseFloat(
+    localStorage.getItem(
+      "tpValue: " + fffChild() + " - " + ffChild() + " - " + fChild()
+    )
+  );
+  const dAEATHospDeadProb = parseFloat(
+    localStorage.getItem("tpValue: " + ffffChild() + " - " + ffChild())
+  );
+  const dIEATHospProb = parseFloat(
+    localStorage.getItem(
+      "tpValue: " + fffChild() + " - " + fsChild() + " - " + fChild()
+    )
+  );
+  const dIEATHospDeadProb = parseFloat(
+    localStorage.getItem("tpValue: " + ffffChild() + " - " + fsChild())
+  );
 
-  //calculation for the DIGITAL AEAT - Hospital adm - Alive
-  const totalAEATAlive = (digitalValue*digitalAEAT*hospitalAEAT*aliveValue).toFixed(4);
+  const cpProb = parseFloat(1 - localStorage.getItem("tpValue: " + fChild()));
+  const cpAEATProb = parseFloat(
+    localStorage.getItem("tpValue: " + sfChild() + " - " + sChild())
+  );
+  const cpAEATHospProb = parseFloat(
+    localStorage.getItem(
+      "tpValue: " + fffChild() + " - " + sfChild() + " - " + sChild()
+    )
+  );
+  const cpAEATHospDeadProb = parseFloat(
+    localStorage.getItem("tpValue: " + ffffChild() + " - " + sfChild())
+  );
+  const cpIEATHospProb = parseFloat(
+    localStorage.getItem(
+      "tpValue: " + sffChild() + " - " + ssChild() + " - " + sChild()
+    )
+  );
+  const cpIEATHospDeadProb = parseFloat(
+    localStorage.getItem("tpValue: " + ffffChild() + " - " + ssChild())
+  );
 
-  //calculation for the Current Pathway - AEAT - Hospital adm - Dead
-  const cpValue = 1- digitalValue; 
-  const cpAEAT = localStorage.getItem('tpValue: AEAT - Current Pathway');
-  const cpHospitalAEAT = localStorage.getItem('tpValue: Hospital Adm - AEAT - Current Pathway');
-  const totalCpDead = (cpValue*cpAEAT*cpHospitalAEAT*deadValue).toFixed(4);
+  const dDead =
+    digitalProb * dAEATProb * dAEATHospProb * dAEATHospDeadProb +
+    digitalProb * dAEATProb * (1 - dAEATHospProb) * dAEATHospDeadProb +
+    digitalProb * (1 - dAEATProb) * dIEATHospProb * dIEATHospDeadProb +
+    digitalProb * (1 - dAEATProb) * (1 - dIEATHospProb) * dIEATHospDeadProb;
 
-  //calculation for the Current Pathway - AEAT - Hospital adm - Alive
-  const totalCpAlive = (cpValue*cpAEAT*cpHospitalAEAT*aliveValue).toFixed(4);
-  
+  const dAlive =
+    digitalProb * dAEATProb * dAEATHospProb * (1 - dAEATHospDeadProb) +
+    digitalProb * dAEATProb * (1 - dAEATHospProb) * (1 - dAEATHospDeadProb) +
+    digitalProb * (1 - dAEATProb) * dIEATHospProb * (1 - dIEATHospDeadProb) +
+    digitalProb *
+      (1 - dAEATProb) *
+      (1 - dIEATHospProb) *
+      (1 - dIEATHospDeadProb);
+
+  const cpDead =
+    cpProb * cpAEATProb * cpAEATHospProb * cpAEATHospDeadProb +
+    cpProb * cpAEATProb * (1 - cpAEATHospProb) * cpAEATHospDeadProb +
+    cpProb * (1 - cpAEATProb) * cpIEATHospProb * cpIEATHospDeadProb +
+    cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * cpIEATHospDeadProb;
+
+  const cpAlive =
+    cpProb * cpAEATProb * cpAEATHospProb * (1 - cpAEATHospDeadProb) +
+    cpProb * cpAEATProb * (1 - cpAEATHospProb) * (1 - cpAEATHospDeadProb) +
+    cpProb * (1 - cpAEATProb) * cpIEATHospProb * (1 - cpIEATHospDeadProb) +
+    cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * (1 - cpIEATHospDeadProb);
+
   return (
     <div className="tcontainer">
       <style>
@@ -89,20 +125,27 @@ export default function TreeCostProb() {
           </tr>
         </thead>
         <tbody>
-          
           {column1.map((label, index) => (
             <tr key={index}>
               <td></td>
-              <td className="t-input" style={{padding: '10px'}}>{label}</td>
-              <td className="t-input">{index === 0 ? totalAEATDead : totalAEATAlive}</td>
+              <td className="t-input" style={{ padding: "10px" }}>
+                {label}
+              </td>
+              <td className="t-input">
+                {index === 0 ? dDead.toFixed(3) : dAlive.toFixed(3)}
+              </td>
             </tr>
           ))}
           <tr style={{ height: "10px" }}></tr>
           {column1.map((label, index) => (
             <tr key={index}>
               <td></td>
-              <td className="t-input" style={{padding: '10px'}}>{label}</td>
-              <td className="t-input">{index === 0 ? totalCpDead : totalCpAlive}</td>
+              <td className="t-input" style={{ padding: "10px" }}>
+                {label}
+              </td>
+              <td className="t-input">
+                {index === 0 ? cpDead.toFixed(3) : cpAlive.toFixed(3)}
+              </td>
             </tr>
           ))}
           <tr>
@@ -168,7 +211,7 @@ export default function TreeCostProb() {
         <tbody>
           <tr>
             <td></td>
-            <td className="t-input">{totalAEATDead}</td>
+            {/* <td className="t-input">{totalAEATDead}</td> */}
             <td></td>
           </tr>
         </tbody>
