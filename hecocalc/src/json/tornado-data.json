@@ -1,18 +1,18 @@
 [
     {
-      "yAxisLabel": "Hospitalisation cost (£2,512.34 to £2,712.65)",
+      "yAxisLabel": "Hospitalisation cost \n(£2,512.34 to £2,712.65)",
       "start": 1798.53,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Hospitalisation cost (£2,512.34 to £2,712.65)",
+      "yAxisLabel": "Hospitalisation cost \n(£2,512.34 to £2,712.65)",
       "start": 1810,
       "end": 1834.57,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Effectiveness of NeuroResponse (0.881 to 0.918)",
+      "yAxisLabel": "Effectiveness of NeuroResponse \n(0.881 to 0.918)",
       "start": 1669.34,
       "end": 1810,
       "category": "High parameter value"
@@ -24,103 +24,103 @@
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Dead - AEAT (0.094 to 0.147)",
+      "yAxisLabel": "Dead - AEAT \n(0.094 to 0.147)",
       "start": 1810,
       "end": 1885.59,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Current Pathway cost (£288.73 to £359.16)",
+      "yAxisLabel": "Current Pathway cost \n(£288.73 to £359.16)",
       "start": 1717.59,
       "end": 1810,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Current Pathway cost (£288.73 to £359.16)",
+      "yAxisLabel": "Current Pathway cost \n(£288.73 to £359.16)",
       "start": 1810,
       "end": 1910,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "NeuroResponse cost (£367.58 to £446.56)",
+      "yAxisLabel": "NeuroResponse cost \n(£367.58 to £446.56)",
       "start": 1810,
       "end": 1982.08,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "NeuroResponse cost (£367.58 to £446.56)",
+      "yAxisLabel": "NeuroResponse cost \n(£367.58 to £446.56)",
       "start": 1658.43,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Going through NeuroResponse (0.569 to 0.630)",
+      "yAxisLabel": "Going through NeuroResponse \n(0.569 to 0.630)",
       "start": 1810,
       "end": 1993.04,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Going through NeuroResponse (0.569 to 0.630)",
+      "yAxisLabel": "Going through NeuroResponse \n(0.569 to 0.630)",
       "start": 1575.05,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Drug cost - AEAT (£19.19 to £40.13)",
+      "yAxisLabel": "Drug cost - AEAT \n(£19.19 to £40.13)",
       "start": 1810,
       "end": 2045.45,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Drug cost - AEAT (£19.19 to £40.13)",
+      "yAxisLabel": "Drug cost - AEAT \n(£19.19 to £40.13)",
       "start": 1625.22,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "AEAT - Current pathway (0.747 to 0.821)",
+      "yAxisLabel": "AEAT - Current pathway \n(0.747 to 0.821)",
       "start": 1810,
       "end": 2023.03,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "AEAT - Current pathway (0.747 to 0.821)",
+      "yAxisLabel": "AEAT - Current pathway \n(0.747 to 0.821)",
       "start": 1601.22,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Total duration of antibiotics (d) - AEAT (7 to 21)",
+      "yAxisLabel": "Total duration of antibiotics (d) \n- AEAT (7 to 21)",
       "start": 1810,
       "end": 2170.99,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Total duration of antibiotics (d) - AEAT (7 to 21)",
+      "yAxisLabel": "Total duration of antibiotics (d) \n- AEAT (7 to 21)",
       "start": 1550.42,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - IEAT - NeuroResponse (0.073 to 0.108)",
+      "yAxisLabel": "Hospital adm - IEAT - \nNeuroResponse (0.073 to 0.108)",
       "start": 1388.34,
       "end": 1810,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - IEAT - NeuroResponse (0.073 to 0.108)",
+      "yAxisLabel": "Hospital adm - IEAT - \nNeuroResponse (0.073 to 0.108)",
       "start": 1810,
       "end": 2208.47,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - IEAT - Current pathway (0.082 to 0.119)",
+      "yAxisLabel": "Hospital adm - IEAT - \nCurrent pathway (0.082 to 0.119)",
       "start": 1371.70,
       "end": 1810,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - IEAT - Current pathway (0.082 to 0.119)",
+      "yAxisLabel": "Hospital adm - IEAT - \n Current pathway (0.082 to 0.119)",
       "start": 1810,
       "end": 2262.20,
       "category": "Low parameter value"
@@ -138,13 +138,13 @@
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "QoL ALive/With clinical response/cured (0.580 to 0.920)",
+      "yAxisLabel": "QoL ALive/With \nclinical response/cured (0.580 to 0.920)",
       "start": 1618.95,
       "end": 1810,
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "QoL ALive/With clinical response/cured (0.580 to 0.920)",
+      "yAxisLabel": "QoL ALive/With \nclinical response/cured (0.580 to 0.920)",
       "start": 1810,
       "end": 2567.98,
       "category": "Low parameter value"
@@ -162,13 +162,13 @@
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - AEAT - NeuroResponse (0.057 to 0.089)",
+      "yAxisLabel": "Hospital adm - AEAT - \nNeuroResponse (0.057 to 0.089)",
       "start": 780.62,
       "end": 1810,
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - AEAT - NeuroResponse (0.057 to 0.089)",
+      "yAxisLabel": "Hospital adm - AEAT \n- NeuroResponse (0.057 to 0.089)",
       "start": 1810,
       "end": 2869.06,
       "category": "High parameter value"

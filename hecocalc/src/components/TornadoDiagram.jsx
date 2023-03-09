@@ -12,6 +12,7 @@ import {
   Label,
   Format,
   AdaptiveLayout,
+  ResponsiveBox
 } from "devextreme-react/chart";
 import data from "../json/tornado-data.json";
 
@@ -20,11 +21,11 @@ var palette = ["#2F75B5", "#EC7D31"];
 
 class Tornado extends React.Component {
   //Defines the min and max of the axis
-  visualRange = [0, 3500];
+  // visualRange = [0, 3500];
 
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center"}}>
         <h3 style={{ fontSize: "24px" }}>Tornado diagram (ICER)</h3>
         <Chart
           id="chart"
@@ -32,9 +33,11 @@ class Tornado extends React.Component {
           barGroupPadding={0.2}
           rotated={true}
           palette={palette}
+          style={{ height: '100%', width: '100%' }}
         >
-          <AdaptiveLayout width={400} height={400} />
-          <Size height={700} />
+          <AdaptiveLayout width={200} height={200} /> 
+          <Size height= {this.props.chartHeight}
+          width={this.props.chartWidth} />
           {/* The tornado diagram is created as a bar range chart, 
           the following takes the defined ranges from the json file */}
           <CommonSeriesSettings
@@ -50,11 +53,12 @@ class Tornado extends React.Component {
             position="inside"
             verticalAlignment="bottom"
             horizontalAlignment="right"
+            backgroundColor={"transparent"}
           ></Legend>
 
           <ValueAxis
             //Sets the axis range from 0,3500 (visualRange)
-            defaultVisualRange={this.visualRange}
+            // defaultVisualRange={this.visualRange}
             tickInterval={500}
           >
             <AxisTitle text={"ICER"} width={100} />

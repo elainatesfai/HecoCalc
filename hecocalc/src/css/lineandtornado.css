@@ -1,0 +1,31 @@
+.LineAndToronado {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  h3{
+    color: #2f75b5;
+  }
+  .Tornado {
+    grid-template-columns: fit-content;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    /* padding: 10px;*/
+    margin: 10px; 
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  
+  .Line {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    /* padding: 10px;*/
+    margin: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
