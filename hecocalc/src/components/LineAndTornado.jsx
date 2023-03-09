@@ -39,7 +39,7 @@ export default function Linechart() {
   }, []);
 
   return (
-    <div className='cont'>
+    <div className='LineAndToronado'>
     <div className='Tornado'>
       <Tornado chartWidth={chartWidth} chartHeight={chartHeight} />
       </div>
