@@ -1,19 +1,20 @@
 import "../css/treecostprob.css";
 import React, { useState } from "react";
-import {
-  fChild,
-  ffChild,
-  fffChild,
-  fsChild,
-  sChild,
-  sfChild,
-  ssChild,
-  sffChild,
-  sfffChild,
-  ssffChild,
-  ffffChild,
-} from "../data/ChildrenData";
+// import {
+//   fChild,
+//   ffChild,
+//   fffChild,
+//   fsChild,
+//   sChild,
+//   sfChild,
+//   ssChild,
+//   sffChild,
+//   sfffChild,
+//   ssffChild,
+//   ffffChild,
+// } from "../data/ChildrenData";
 import TableProbModal from "./TableProbModal";
+import TableCostModal from "./TableCostModal";
 import {
   digitalProb,
   dAEATHospProb,
@@ -30,18 +31,29 @@ import {
   dAlive,
   cpDead,
   cpAlive,
+  sumECCurrentP,
+  sumECDigital
 } from "../data/DataCalc";
+
 
 export default function TreeCostProb() {
   const [probOpen, setProbOpen] = useState(false);
-  const [cIsOpen, costIsOpen] = useState(false);
+  const [costOpen, setCostOpen] = useState(false);
 
   const openProbTable = () => {
     setProbOpen(true);
   };
 
+  const openCostTable = () => {
+    setCostOpen(true);
+  };
+
+  // const ECDigSum = sumECDigital();
+  // const ECCPSum = sumECCurrentP();
+
   const column1 = ["Dead", "Alive"];
 
+  const data = [sumECDigital(),sumECCurrentP()];
   const column2 = ["Digital", "Current pathway"];
 
   const buttonlabels = ["DIGITAL", "Current pathway"];
@@ -201,22 +213,26 @@ export default function TreeCostProb() {
         </thead>
         <tbody>
           {/* column labels Dead Alive*/}
-          {column2.map((label) => (
-            <tr>
+          {column2.map((label,index) => (
+            <tr key={index}>
               <td></td>
 
               <td className="t-input">{label}</td>
+              {/* <td className="t-input">{index === 0 ? sumECDigital().toFixed(3): sumECDigital().toFixed(3) }</td>
+              <td className="t-input">{index === 1 ? sumECCurrentP().toFixed(3): sumECCurrentP().toFixed(3) }</td> */}
               <td className="t-input"></td>
               <td className="t-input"></td>
+
             </tr>
           ))}
           <tr>
             <td></td>
             <td></td>
             <td>
-              <button className="Link" onClick={() => costIsOpen(true)}>
+            <button className="Link" onClick={openCostTable}>
                 View More
               </button>
+              {costOpen && <TableCostModal />}
             </td>
           </tr>
         </tbody>
@@ -235,34 +251,10 @@ export default function TreeCostProb() {
         <tbody>
           <tr>
             <td></td>
-            {/* <td className="t-input">{totalAEATDead}</td> */}
             <td></td>
           </tr>
         </tbody>
       </table>
-
-      {/* FOR POPUP INCASE WE NEED IT */}
-      {/* {cIsOpen && (
-         <div className="tableCost">
-          <div>
-            This is the content of the pop-up.
-          </div>
-          <button className="costClose"onClick={() => costIsOpen(false)}>
-            CloseCost
-          </button>
-         </div>
-        )}
-
-    {pIsOpen && (
-         <div className="tableProb">
-          <div>
-            This is the content of the pop-up.
-          </div>
-          <button className="probClose"onClick={() => probIsOpen(false)}>
-            CloseProb
-          </button>
-         </div>
-        )} */}
     </div>
   );
 }

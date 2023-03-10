@@ -78,7 +78,7 @@
   background-color: rgb(255, 188, 188);
   border: none;
   height: 20px;
-  width: 80px;
+  width: 120px;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -89,7 +89,7 @@
   background-color: rgb(180, 211, 240);
   border: none;
   height: 20px;
-  width: 90px;
+  width: 100px;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -127,6 +127,14 @@
 }
 
 .probModal-container {
+  background-color: #f9fafb;
+  position: absolute;
+  top: 250px;
+  right: 40px;
+  z-index: 2;
+}
+
+.costModal-container {
   background-color: #f9fafb;
   position: absolute;
   top: 250px;
