@@ -13,84 +13,106 @@ import {
   ssffChild,
   ffffChild,
 } from "../data/ChildrenData";
+import TableProbModal from "./TableProbModal";
+import { 
+  digitalProb,
+  dAEATHospProb,
+  dAEATHospDeadProb,
+  dIEATHospProb,
+  dIEATHospDeadProb,
+  cpProb,
+  cpAEATProb,
+  cpAEATHospProb,
+  cpAEATHospDeadProb,
+  cpIEATHospProb,
+  cpIEATHospDeadProb,
+  dDead,
+  dAlive,
+  cpDead,
+  cpAlive } from "../data/DataCalc";
 
 export default function TreeCostProb() {
-  const [pIsOpen, probIsOpen] = useState(false);
+  const [probOpen, setProbOpen] = useState(false);
   const [cIsOpen, costIsOpen] = useState(false);
+
+  const openProbTable = () => {
+    setProbOpen(true);
+  };
+
   const column1 = ["Dead", "Alive"];
 
   const column2 = ["Digital", "Current pathway"];
 
   const buttonlabels = ["DIGITAL", "Current pathway"];
 
-  const digitalProb = parseFloat(localStorage.getItem("tpValue: " + fChild()));
-  const dAEATProb = parseFloat(
-    localStorage.getItem("tpValue: " + ffChild() + " - " + fChild())
-  );
-  const dAEATHospProb = parseFloat(
-    localStorage.getItem(
-      "tpValue: " + fffChild() + " - " + ffChild() + " - " + fChild()
-    )
-  );
-  const dAEATHospDeadProb = parseFloat(
-    localStorage.getItem("tpValue: " + ffffChild() + " - " + ffChild())
-  );
-  const dIEATHospProb = parseFloat(
-    localStorage.getItem(
-      "tpValue: " + fffChild() + " - " + fsChild() + " - " + fChild()
-    )
-  );
-  const dIEATHospDeadProb = parseFloat(
-    localStorage.getItem("tpValue: " + ffffChild() + " - " + fsChild())
-  );
+  // const digitalProb = parseFloat(localStorage.getItem("tpValue: " + fChild()));
+  // const dAEATProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + ffChild() + " - " + fChild())
+  // );
+  // const dAEATHospProb = parseFloat(
+  //   localStorage.getItem(
+  //     "tpValue: " + fffChild() + " - " + ffChild() + " - " + fChild()
+  //   )
+  // );
+  // const dAEATHospDeadProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + ffffChild() + " - " + ffChild())
+  // );
+  // const dIEATHospProb = parseFloat(
+  //   localStorage.getItem(
+  //     "tpValue: " + fffChild() + " - " + fsChild() + " - " + fChild()
+  //   )
+  // );
+  // const dIEATHospDeadProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + ffffChild() + " - " + fsChild())
+  // );
 
-  const cpProb = parseFloat(1 - localStorage.getItem("tpValue: " + fChild()));
-  const cpAEATProb = parseFloat(
-    localStorage.getItem("tpValue: " + sfChild() + " - " + sChild())
-  );
-  const cpAEATHospProb = parseFloat(
-    localStorage.getItem(
-      "tpValue: " + fffChild() + " - " + sfChild() + " - " + sChild()
-    )
-  );
-  const cpAEATHospDeadProb = parseFloat(
-    localStorage.getItem("tpValue: " + ffffChild() + " - " + sfChild())
-  );
-  const cpIEATHospProb = parseFloat(
-    localStorage.getItem(
-      "tpValue: " + sffChild() + " - " + ssChild() + " - " + sChild()
-    )
-  );
-  const cpIEATHospDeadProb = parseFloat(
-    localStorage.getItem("tpValue: " + ffffChild() + " - " + ssChild())
-  );
+  // const cpProb = parseFloat(1 - localStorage.getItem("tpValue: " + fChild()));
+  // const cpAEATProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + sfChild() + " - " + sChild())
+  // );
+  // const cpAEATHospProb = parseFloat(
+  //   localStorage.getItem(
+  //     "tpValue: " + fffChild() + " - " + sfChild() + " - " + sChild()
+  //   )
+  // );
+  // const cpAEATHospDeadProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + ffffChild() + " - " + sfChild())
+  // );
+  // const cpIEATHospProb = parseFloat(
+  //   localStorage.getItem(
+  //     "tpValue: " + sffChild() + " - " + ssChild() + " - " + sChild()
+  //   )
+  // );
+  // const cpIEATHospDeadProb = parseFloat(
+  //   localStorage.getItem("tpValue: " + ffffChild() + " - " + ssChild())
+  // );
 
-  const dDead =
-    digitalProb * dAEATProb * dAEATHospProb * dAEATHospDeadProb +
-    digitalProb * dAEATProb * (1 - dAEATHospProb) * dAEATHospDeadProb +
-    digitalProb * (1 - dAEATProb) * dIEATHospProb * dIEATHospDeadProb +
-    digitalProb * (1 - dAEATProb) * (1 - dIEATHospProb) * dIEATHospDeadProb;
+  // const dDead =
+  //   digitalProb * dAEATProb * dAEATHospProb * dAEATHospDeadProb +
+  //   digitalProb * dAEATProb * (1 - dAEATHospProb) * dAEATHospDeadProb +
+  //   digitalProb * (1 - dAEATProb) * dIEATHospProb * dIEATHospDeadProb +
+  //   digitalProb * (1 - dAEATProb) * (1 - dIEATHospProb) * dIEATHospDeadProb;
 
-  const dAlive =
-    digitalProb * dAEATProb * dAEATHospProb * (1 - dAEATHospDeadProb) +
-    digitalProb * dAEATProb * (1 - dAEATHospProb) * (1 - dAEATHospDeadProb) +
-    digitalProb * (1 - dAEATProb) * dIEATHospProb * (1 - dIEATHospDeadProb) +
-    digitalProb *
-      (1 - dAEATProb) *
-      (1 - dIEATHospProb) *
-      (1 - dIEATHospDeadProb);
+  // const dAlive =
+  //   digitalProb * dAEATProb * dAEATHospProb * (1 - dAEATHospDeadProb) +
+  //   digitalProb * dAEATProb * (1 - dAEATHospProb) * (1 - dAEATHospDeadProb) +
+  //   digitalProb * (1 - dAEATProb) * dIEATHospProb * (1 - dIEATHospDeadProb) +
+  //   digitalProb *
+  //     (1 - dAEATProb) *
+  //     (1 - dIEATHospProb) *
+  //     (1 - dIEATHospDeadProb);
 
-  const cpDead =
-    cpProb * cpAEATProb * cpAEATHospProb * cpAEATHospDeadProb +
-    cpProb * cpAEATProb * (1 - cpAEATHospProb) * cpAEATHospDeadProb +
-    cpProb * (1 - cpAEATProb) * cpIEATHospProb * cpIEATHospDeadProb +
-    cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * cpIEATHospDeadProb;
+  // const cpDead =
+  //   cpProb * cpAEATProb * cpAEATHospProb * cpAEATHospDeadProb +
+  //   cpProb * cpAEATProb * (1 - cpAEATHospProb) * cpAEATHospDeadProb +
+  //   cpProb * (1 - cpAEATProb) * cpIEATHospProb * cpIEATHospDeadProb +
+  //   cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * cpIEATHospDeadProb;
 
-  const cpAlive =
-    cpProb * cpAEATProb * cpAEATHospProb * (1 - cpAEATHospDeadProb) +
-    cpProb * cpAEATProb * (1 - cpAEATHospProb) * (1 - cpAEATHospDeadProb) +
-    cpProb * (1 - cpAEATProb) * cpIEATHospProb * (1 - cpIEATHospDeadProb) +
-    cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * (1 - cpIEATHospDeadProb);
+  // const cpAlive =
+  //   cpProb * cpAEATProb * cpAEATHospProb * (1 - cpAEATHospDeadProb) +
+  //   cpProb * cpAEATProb * (1 - cpAEATHospProb) * (1 - cpAEATHospDeadProb) +
+  //   cpProb * (1 - cpAEATProb) * cpIEATHospProb * (1 - cpIEATHospDeadProb) +
+  //   cpProb * (1 - cpAEATProb) * (1 - cpIEATHospProb) * (1 - cpIEATHospDeadProb);
 
   return (
     <div className="tcontainer">
@@ -132,7 +154,7 @@ export default function TreeCostProb() {
                 {label}
               </td>
               <td className="t-input">
-                {index === 0 ? dDead.toFixed(3) : dAlive.toFixed(3)}
+                {index === 0 ? dDead().toFixed(3) : dAlive().toFixed(3)}
               </td>
             </tr>
           ))}
@@ -144,7 +166,7 @@ export default function TreeCostProb() {
                 {label}
               </td>
               <td className="t-input">
-                {index === 0 ? cpDead.toFixed(3) : cpAlive.toFixed(3)}
+                {index === 0 ? cpDead().toFixed(3) : cpAlive().toFixed(3)}
               </td>
             </tr>
           ))}
@@ -152,9 +174,10 @@ export default function TreeCostProb() {
             <td></td>
             <td></td>
             <td>
-              <button className="Link" onClick={() => probIsOpen(true)}>
+              <button className="Link" onClick={openProbTable}>
                 View More
               </button>
+              {probOpen && <TableProbModal />}
             </td>
           </tr>
         </tbody>

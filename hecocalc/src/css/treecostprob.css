@@ -123,3 +123,11 @@
   border: none;
   background-color: white;
 }
+
+.probModal-container{
+  background-color: #F9FAFB;
+  position: fixed;
+  top: 350px;
+  right: 0;
+  z-index: 10;
+}
