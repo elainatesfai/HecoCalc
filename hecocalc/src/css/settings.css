@@ -21,12 +21,19 @@
   font-weight: bold;
   margin: 0;
   margin-bottom: 0.5rem;
+  /* left: 0; */
+  /* right: 0; */
+  padding-left: 0;
+  width: 170px;
 }
 
 .settings-bottom-line-small {
-  font-size: 0.8rem;
+  font-size: 10px;
   margin: 0;
-  margin-top: 0.5rem;
+  margin-top: 0px;
+  width: 85px;
+  font-weight: lighter;
+
 }
 
 .settings-label-container {
@@ -40,9 +47,9 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0px  ;
   border-radius: 6px;
-  padding: 0.5rem;
+  padding: 0px;
 }
 
 .settings-label {
@@ -60,6 +67,10 @@
   border-radius: 0.25rem;
   transition: border-color 0.2s ease-in-out;
   border: none;
+  margin: 0;
+  width: 400px;
+  background-color:#f2f2f2;
+
 }
 
 .settings-select:focus {
@@ -69,9 +80,9 @@
 
 .settings-btn {
   display: block;
-  width: 30%;
+  width: 60%;
   margin: 0;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   font-size: 1rem;
   font-weight: bold;
   color: black;
@@ -79,6 +90,7 @@
   border: none;
   border-radius: 0.25rem;
   transition: background-color 0.2s ease-in-out;
+  padding: 10px;
 }
 
 .settings-btn:hover {
