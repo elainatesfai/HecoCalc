@@ -109,119 +109,119 @@ export default function TreeGraph() {
   );
 
   //------------------------First Child------------------------
-  changedData[0].children[0].attributes.Prob = Math.round(prob1 * 100) / 100;
+  changedData[0].children[0].attributes.Prob = Math.round(prob1 * 1000) / 1000;
   changedData[0].children[1].attributes.Prob =
-    Math.round((1 - prob1) * 100) / 100;
+    Math.round((1 - prob1) * 1000) / 1000;
 
   //------------------------First child's first child------------------------
   changedData[0].children[0].children[0].attributes.Prob =
-    Math.round(prob2 * 100) / 100;
+    Math.round(prob2 * 1000) / 1000;
   changedData[0].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob2) * 100) / 100;
+    Math.round((1 - prob2) * 1000) / 1000;
 
   //------------First child's first child's first child------------
   changedData[0].children[0].children[0].children[0].attributes.Prob =
-    Math.round(prob3 * 100) / 100;
+    Math.round(prob3 * 1000) / 1000;
   changedData[0].children[0].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob3) * 100) / 100;
+    Math.round((1 - prob3) * 1000) / 1000;
 
   //------------First child's second child's first child------------
   changedData[0].children[0].children[1].children[0].attributes.Prob =
-    Math.round(prob4 * 100) / 100;
+    Math.round(prob4 * 1000) / 1000;
   changedData[0].children[0].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob4) * 100) / 100;
+    Math.round((1 - prob4) * 1000) / 1000;
 
   //------------Second child's first child------------
   changedData[0].children[1].children[0].attributes.Prob =
-    Math.round(prob5 * 100) / 100;
+    Math.round(prob5 * 1000) / 1000;
   changedData[0].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob5) * 100) / 100;
+    Math.round((1 - prob5) * 1000) / 1000;
 
   //------------Second child's first child's first child------------
   changedData[0].children[1].children[0].children[0].attributes.Prob =
-    Math.round(prob6 * 100) / 100;
+    Math.round(prob6 * 1000) / 1000;
   changedData[0].children[1].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob6) * 100) / 100;
+    Math.round((1 - prob6) * 1000) / 1000;
 
   //------------Second child's second child's first child------------
   changedData[0].children[1].children[1].children[0].attributes.Prob =
-    Math.round(prob7 * 100) / 100;
+    Math.round(prob7 * 1000) / 1000;
   changedData[0].children[1].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob7) * 100) / 100;
+    Math.round((1 - prob7) * 1000) / 1000;
 
   //------------Calculating Dead and Alive for first child's first child------------
   changedData[0].children[0].children[0].children[0].children[0].attributes.Prob =
-    Math.round(prob8 * 100) / 100;
+    Math.round(prob8 * 1000) / 1000;
 
   changedData[0].children[0].children[0].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob8) * 100) / 100;
+    Math.round((1 - prob8) * 1000) / 1000;
 
   changedData[0].children[0].children[0].children[1].children[0].attributes.Prob =
-    Math.round(prob8 * 100) / 100;
+    Math.round(prob8 * 1000) / 1000;
 
   changedData[0].children[0].children[0].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob8) * 100) / 100;
+    Math.round((1 - prob8) * 1000) / 1000;
 
   changedData[0].children[1].children[0].children[0].children[0].attributes.Prob =
-    Math.round(prob8 * 100) / 100;
+    Math.round(prob8 * 1000) / 1000;
 
   changedData[0].children[1].children[0].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob8) * 100) / 100;
+    Math.round((1 - prob8) * 1000) / 1000;
 
   changedData[0].children[1].children[0].children[1].children[0].attributes.Prob =
-    Math.round(prob8 * 100) / 100;
+    Math.round(prob8 * 1000) / 1000;
 
   changedData[0].children[1].children[0].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob8) * 100) / 100;
+    Math.round((1 - prob8) * 1000) / 1000;
 
   //------------Calculating Dead and Alive for first child's second child------------
   changedData[0].children[0].children[1].children[0].children[0].attributes.Prob =
-    Math.round(prob9 * 100) / 100;
+    Math.round(prob9 * 1000) / 1000;
 
   changedData[0].children[0].children[1].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob9) * 100) / 100;
+    Math.round((1 - prob9) * 1000) / 1000;
 
   changedData[0].children[0].children[1].children[1].children[0].attributes.Prob =
-    Math.round(prob9 * 100) / 100;
+    Math.round(prob9 * 1000) / 1000;
 
   changedData[0].children[0].children[1].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob9) * 100) / 100;
+    Math.round((1 - prob9) * 1000) / 1000;
 
   changedData[0].children[1].children[1].children[0].children[0].attributes.Prob =
-    Math.round(prob9 * 100) / 100;
+    Math.round(prob9 * 1000) / 1000;
 
   changedData[0].children[1].children[1].children[0].children[1].attributes.Prob =
-    Math.round((1 - prob9) * 100) / 100;
+    Math.round((1 - prob9) * 1000) / 1000;
 
   changedData[0].children[1].children[1].children[1].children[0].attributes.Prob =
-    Math.round(prob9 * 100) / 100;
+    Math.round(prob9 * 1000) / 1000;
 
   changedData[0].children[1].children[1].children[1].children[1].attributes.Prob =
-    Math.round((1 - prob9) * 100) / 100;
+    Math.round((1 - prob9) * 1000) / 1000;
 
   //------------------------COSTS * DAYS------------------------
   changedData[0].children[0].children[0].children[0].attributes.Cost =
-    Math.round(cost1 * days1 * 100) / 100;
+    Math.round(cost1 * days1 * 1000) / 1000;
   changedData[0].children[1].children[0].children[0].attributes.Cost =
-    Math.round(cost1 * days1 * 100) / 100;
+    Math.round(cost1 * days1 * 1000) / 1000;
 
   changedData[0].children[0].children[1].children[0].attributes.Cost =
-    Math.round(cost1 * days2 * 100) / 100;
+    Math.round(cost1 * days2 * 1000) / 1000;
   changedData[0].children[1].children[1].children[0].attributes.Cost =
-    Math.round(cost1 * days2 * 100) / 100;
+    Math.round(cost1 * days2 * 1000) / 1000;
 
   changedData[0].children[0].attributes.Cost = cost2;
   changedData[0].children[1].attributes.Cost = cost3;
 
   changedData[0].children[0].children[0].attributes.Cost =
-    Math.round(cost4 * days3 * 100) / 100;
+    Math.round(cost4 * days3 * 1000) / 1000;
   changedData[0].children[1].children[0].attributes.Cost =
-    Math.round(cost4 * days3 * 100) / 100;
+    Math.round(cost4 * days3 * 1000) / 1000;
 
   changedData[0].children[0].children[1].attributes.Cost =
-    Math.round(cost5 * days4 * 100) / 100;
+    Math.round(cost5 * days4 * 1000) / 1000;
   changedData[0].children[1].children[1].attributes.Cost =
-    Math.round(cost5 * days4 * 100) / 100;
+    Math.round(cost5 * days4 * 1000) / 1000;
 
   const [open, setOpen] = useState(false);
 

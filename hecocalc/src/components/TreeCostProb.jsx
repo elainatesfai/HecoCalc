@@ -14,7 +14,7 @@ import {
   ffffChild,
 } from "../data/ChildrenData";
 import TableProbModal from "./TableProbModal";
-import { 
+import {
   digitalProb,
   dAEATHospProb,
   dAEATHospDeadProb,
@@ -29,7 +29,8 @@ import {
   dDead,
   dAlive,
   cpDead,
-  cpAlive } from "../data/DataCalc";
+  cpAlive,
+} from "../data/DataCalc";
 
 export default function TreeCostProb() {
   const [probOpen, setProbOpen] = useState(false);
