@@ -98,7 +98,7 @@ export default function TableProbModal() {
 
   return (
     <div className="probModal-container">
-      <table>
+      <table className="table-box4"style={{borderCollapse: 'collapse', borderSpacing: "0"}}>
         <thead>
           <tr style={{ display: "flex" }}>
             {buttonLabels.map((label, index) => (
@@ -127,20 +127,25 @@ export default function TableProbModal() {
             <tr
               key={rowIndex}
               style={{
-                display: "flex",
-                borderBottom: rowIndex === 16 && rowIndex === 7 ? "1px " : "0",
+                display: 'flex',
+                borderBottom: "1px solid #E8E8E8 ",
                 marginBottom: rowIndex === 7 ? "30px" : " ",
-                borderTop: rowIndex === 0 && rowIndex === 8 ? "1px" : "0",
+                borderTop: rowIndex === 0 || rowIndex === 8 ? "1px solid #E8E8E8" : "0",
+                
+                 boxSizing: "border-box",
               }}
             >
               {[...Array(3)].map((_, colIndex) => (
                 <td
                   key={colIndex}
-                  className="t-input"
+                  className="t-inputModal"
                   style={{
-                    flex: "1",
-                    borderRight: "1px",
-                    padding: "10px",
+                    // flex: "1",
+                    // height: "35px",
+                    borderRight: "1px solid #E8E8E8",
+                    borderLeft: colIndex===0 ? "1px solid #E8E8E8": "0",
+                    paddingTop: "10px",
+                    paddingBottom: '10px',
                     textAlign: "center",
                   }}
                 >

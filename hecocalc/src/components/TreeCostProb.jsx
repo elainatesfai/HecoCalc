@@ -37,7 +37,7 @@ export default function TreeCostProb() {
   const [cIsOpen, costIsOpen] = useState(false);
 
   const openProbTable = () => {
-    setProbOpen(true);
+    setProbOpen(!probOpen);
   };
 
   const column1 = ["Dead", "Alive"];
@@ -176,7 +176,8 @@ export default function TreeCostProb() {
             <td></td>
             <td>
               <button className="Link" onClick={openProbTable}>
-                View More
+                {probOpen ? 'Hide table' : 'View More'}
+                
               </button>
               {probOpen && <TableProbModal />}
             </td>
