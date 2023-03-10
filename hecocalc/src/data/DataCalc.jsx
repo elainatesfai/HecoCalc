@@ -182,7 +182,7 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  dECDigitalIeatHos()+
  aECDigitalIeatHos()+
  dECDigitalIeatNon()+
- aECDigitalIeatNon;
+ aECDigitalIeatNon();
 
  //SUM of all expected costs in CP
 
@@ -193,7 +193,7 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  dECCurrentPIeatHos()+
  aECCurrentPIeatHos()+
  dECCurrentPIeatNon()+
- aECCurrentPIeatNon;
+ aECCurrentPIeatNon();
  //Expected costs for Current Pathway
  export const dECCurrentPAeatHos  =()=>  dCpAEATHpProb()*costCpAEAT();
  export const aECCurrentPAeatHos  =()=>  aCpAEATHpProb()*costCpAEAT();
