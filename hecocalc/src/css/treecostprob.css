@@ -132,4 +132,20 @@
   top: 250px;
   right: 40px;
   z-index: 2;
+  
 }
+
+.t-inputModal{
+  background-color: #fbfbfc;
+
+  border-color: #e8e8e8;
+  border-style: hidden ;
+  /* border-width: 0.1rem; */
+  flex: 1;
+  height: 35px;
+  width: 90px;
+  font-size: 10px;
+
+}
+
+
