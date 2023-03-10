@@ -105,11 +105,15 @@ dAEATProb() *
 (1 - dAEATHospDeadProb());
 export const dDigIEATHpProb  = () =>
 digitalProb() * (1 - dAEATProb()) * dIEATHospProb() * dIEATHospDeadProb();
+
+//X
 export const aDigIEATHpProb  = () =>
 digitalProb() *
 (1 - dAEATProb()) *
 dIEATHospProb() *
 (1 - dIEATHospDeadProb());
+
+
 export const dDigIEATNonHpProb  = () =>
 digitalProb() *
 (1 - dAEATProb()) *
@@ -167,7 +171,7 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  export const aECDigitalAeatNon  =()=>  aDigAEATNonHpProb()*costDigitalAEATNon();
  export const dECDigitalIeatHos  =()=>  dDigIEATHpProb()*costDigitalIEAT();
  export const aECDigitalIeatHos  =()=>  aDigIEATHpProb()*costDigitalIEAT();
- export const dECDigitalIeatNon  =()=>  dDigIEATNonHpProb()*costDigitalIEATNon();
+ export const dECDigitalIeatNon  =()=>  dDigIEATNonHpProb()*costDigitalIEATNon(); //XXXX
  export const aECDigitalIeatNon  =()=>  aDigIEATNonHpProb()*costDigitalIEATNon();
 
  //SUM of all expected costs in digital
@@ -197,7 +201,7 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  export const aECCurrentPAeatNon  =()=>  aCpAEATNonHpProb()*costCpAEATNon();
  export const dECCurrentPIeatHos  =()=>  dCpIEATHpProb()*costCpIEAT();
  export const aECCurrentPIeatHos  =()=>  aCpIEATHpProb()*costCpIEAT();
- export const dECCurrentPIeatNon  =()=>  dCpIEATNonHpProb()*costCpIEATNon();
+ export const dECCurrentPIeatNon  =()=>  dCpIEATNonHpProb()*costCpIEATNon();  //XXX
  export const aECCurrentPIeatNon  =()=>  aCpIEATNonHpProb()*costCpIEATNon();
 
 

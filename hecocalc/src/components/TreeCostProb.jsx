@@ -220,7 +220,7 @@ export default function TreeCostProb() {
               <td className="t-input">{label}</td>
               {/* <td className="t-input">{index === 0 ? sumECDigital().toFixed(3): sumECDigital().toFixed(3) }</td>
               <td className="t-input">{index === 1 ? sumECCurrentP().toFixed(3): sumECCurrentP().toFixed(3) }</td> */}
-              <td className="t-input"></td>
+              <td className="t-input">{index===0?sumECDigital(): sumECCurrentP()}</td>
               <td className="t-input"></td>
 
             </tr>
