@@ -165,6 +165,29 @@ export const costCpIEAT  = () => cpCost() + drugIEATCost() + dAEATHospCost();
 export const costCpIEATNon  = () => cpCost() + drugIEATCost();
 
  //Excpected costs for Digital
+ export const dECDigitalAeatHosQALYs =()=> dDigAEATHpProb()*utilitiesALive();
+ export const aECDigitalAeatHosQALYs  =()=> aDigAEATHpProb()*utilitiesALive();
+ export const dECDigitalAeatNonQALYs  =()=>  dDigAEATNonHpProb()*utilitiesALive();
+ export const aECDigitalAeatNonQALYs  =()=>  aDigAEATNonHpProb()*utilitiesALive();
+ export const dECDigitalIeatHosQALYs  =()=>  dDigIEATHpProb()*utilitiesALive();
+ export const aECDigitalIeatHosQALYs  =()=>  aDigIEATHpProb()*utilitiesALive();
+ export const dECDigitalIeatNonQALYs  =()=>  dDigIEATNonHpProb()*utilitiesALive(); //XXXX
+ export const aECDigitalIeatNonQALYs  =()=>  aDigIEATNonHpProb()*utilitiesALive();
+
+
+ //Expected costs for Current Pathway
+ export const dECCurrentPAeatHosQALYs  =()=>  dCpAEATHpProb()*utilitiesALive();
+ export const aECCurrentPAeatHosQALYs  =()=>  aCpAEATHpProb()*utilitiesALive();
+ export const dECCurrentPAeatNonQALYs  =()=>  dCpAEATNonHpProb()*utilitiesALive();
+ export const aECCurrentPAeatNonQALYs  =()=>  aCpAEATNonHpProb()*utilitiesALive();
+ export const dECCurrentPIeatHosQALYs  =()=>  dCpIEATHpProb()*utilitiesALive();
+ export const aECCurrentPIeatHosQALYs  =()=>  aCpIEATHpProb()*utilitiesALive();
+ export const dECCurrentPIeatNonQALYs  =()=>  dCpIEATNonHpProb()*utilitiesALive();  //XXX
+ export const aECCurrentPIeatNonQALYs  =()=>  aCpIEATNonHpProb()*utilitiesALive();
+
+
+ //Expected QALYS Digital
+
  export const dECDigitalAeatHos =()=> dDigAEATHpProb()*costDigitalAEAT();
  export const aECDigitalAeatHos  =()=> aDigAEATHpProb()*costDigitalAEAT();
  export const dECDigitalAeatNon  =()=>  dDigAEATNonHpProb()*costDigitalAEATNon();
@@ -174,27 +197,18 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  export const dECDigitalIeatNon  =()=>  dDigIEATNonHpProb()*costDigitalIEATNon(); //XXXX
  export const aECDigitalIeatNon  =()=>  aDigIEATNonHpProb()*costDigitalIEATNon();
 
- //SUM of all expected costs in digital
- export const sumECDigital =()=>  dECDigitalAeatHos()+
- aECDigitalAeatHos()+
- dECDigitalAeatNon()+
- aECDigitalAeatNon()+
- dECDigitalIeatHos()+
- aECDigitalIeatHos()+
- dECDigitalIeatNon()+
- aECDigitalIeatNon();
+  //SUM of all expected costs in CP
 
- //SUM of all expected costs in CP
+  export const sumECCurrentP =()=> dECCurrentPAeatHos()+
+  aECCurrentPAeatHos()+
+  dECCurrentPAeatNon()+
+  aECCurrentPAeatNon()+
+  dECCurrentPIeatHos()+
+  aECCurrentPIeatHos()+
+  dECCurrentPIeatNon()+
+  aECCurrentPIeatNon();
 
- export const sumECCurrentP =()=> dECCurrentPAeatHos()+
- aECCurrentPAeatHos()+
- dECCurrentPAeatNon()+
- aECCurrentPAeatNon()+
- dECCurrentPIeatHos()+
- aECCurrentPIeatHos()+
- dECCurrentPIeatNon()+
- aECCurrentPIeatNon();
- //Expected costs for Current Pathway
+ //Expected QALYs CP
  export const dECCurrentPAeatHos  =()=>  dCpAEATHpProb()*costCpAEAT();
  export const aECCurrentPAeatHos  =()=>  aCpAEATHpProb()*costCpAEAT();
  export const dECCurrentPAeatNon  =()=>  dCpAEATNonHpProb()*costCpAEATNon();
@@ -204,5 +218,15 @@ export const costCpIEATNon  = () => cpCost() + drugIEATCost();
  export const dECCurrentPIeatNon  =()=>  dCpIEATNonHpProb()*costCpIEATNon();  //XXX
  export const aECCurrentPIeatNon  =()=>  aCpIEATNonHpProb()*costCpIEATNon();
 
+  //SUM of all expected costs in digital
+  export const sumECDigital =()=>  dECDigitalAeatHos()+
+  aECDigitalAeatHos()+
+  dECDigitalAeatNon()+
+  aECDigitalAeatNon()+
+  dECDigitalIeatHos()+
+  aECDigitalIeatHos()+
+  dECDigitalIeatNon()+
+  aECDigitalIeatNon();
+ 
 
 

@@ -1,5 +1,5 @@
 #treeWrapper {
-  height: 100vh;
+  height: 200vh;
   overflow: hidden;
   background-color: white;;
 
@@ -9,7 +9,7 @@
 .tree {
   height: 100%;
   overflow: hidden;
-  transform: translateY(50%);
+  transform: translateY(25%);
   background-color: #F9FAFB;
 }
 

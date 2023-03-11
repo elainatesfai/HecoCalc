@@ -27,6 +27,8 @@ import {
   costCpIEATNon,
   utilitiesALive
 } from "../data/DataCalc.jsx";
+
+import { openCostTable, openProbTable, closeCostTable, closeProbTable } from "./TreeCostProb";
 // import {
 //   digitalProb,
 //   dAEATProb,
@@ -227,13 +229,14 @@ export default function TableProbModal() {
                         rowIndex === 5 ||
                         rowIndex === 7)
                     ? utilitiesALive().toFixed(4)
-                    : utilitiesALive().toFixed(4)}
+                    : utilitiesALive().toFixed(4)
+                  }
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </div>  
   );
 }

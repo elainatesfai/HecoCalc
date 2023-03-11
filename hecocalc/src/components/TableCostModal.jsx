@@ -1,30 +1,30 @@
 import React from "react";
 import "../css/treecostprob.css";
 import {
-    dDigAEATHpProb,
-    aDigAEATHpProb,
-    dDigIEATHpProb,
-    aDigIEATHpProb,
-    dCpAEATHpProb,
-    aCpAEATHpProb,
-    dCpIEATHpProb,
-    aCpIEATHpProb,
-    costDigitalAEAT,
-    costDigitalAEATNon,
-    costDigitalIEAT,
-    costDigitalIEATNon,
-    costCpAEAT,
-    costCpAEATNon,
-    costCpIEAT,
-    costCpIEATNon,
-    aDigAEATNonHpProb,
-    dDigAEATNonHpProb,
-    dDigIEATNonHpProb,
-    aDigIEATNonHpProb,
-    dCpAEATNonHpProb,
-    aCpAEATNonHpProb,
-    dCpIEATNonHpProb,
-    aCpIEATNonHpProb,
+    // dDigAEATHpProb,
+    // aDigAEATHpProb,
+    // dDigIEATHpProb,
+    // aDigIEATHpProb,
+    // dCpAEATHpProb,
+    // aCpAEATHpProb,
+    // dCpIEATHpProb,
+    // aCpIEATHpProb,
+    // costDigitalAEAT,
+    // costDigitalAEATNon,
+    // costDigitalIEAT,
+    // costDigitalIEATNon,
+    // costCpAEAT,
+    // costCpAEATNon,
+    // costCpIEAT,
+    // costCpIEATNon,
+    // aDigAEATNonHpProb,
+    // dDigAEATNonHpProb,
+    // dDigIEATNonHpProb,
+    // aDigIEATNonHpProb,
+    // dCpAEATNonHpProb,
+    // aCpAEATNonHpProb,
+    // dCpIEATNonHpProb,
+    // aCpIEATNonHpProb,
     
     dECDigitalAeatHos,
     aECDigitalAeatHos,
@@ -42,32 +42,34 @@ import {
     dECCurrentPIeatHos,
     aECCurrentPIeatHos,
     dECCurrentPIeatNon,
-    aECCurrentPIeatNon
+    aECCurrentPIeatNon,
 
+     //Excpected costs for Digital
+    dECDigitalAeatHosQALYs,
+    aECDigitalAeatHosQALYs,
+    dECDigitalAeatNonQALYs,
+    aECDigitalAeatNonQALYs,
+    dECDigitalIeatHosQALYs,
+    aECDigitalIeatHosQALYs,
+    dECDigitalIeatNonQALYs,
+    aECDigitalIeatNonQALYs,
+
+
+ //Expected costs for Current Pathway
+    dECCurrentPAeatHosQALYs,
+    aECCurrentPAeatHosQALYs,
+    dECCurrentPAeatNonQALYs,
+    aECCurrentPAeatNonQALYs,
+    dECCurrentPIeatHosQALYs,
+    aECCurrentPIeatHosQALYs,
+    dECCurrentPIeatNonQALYs,
+    aECCurrentPIeatNonQALYs
 
 
 } from "../data/DataCalc.jsx";
 export default function TableCostModal(){
     const buttonLabels = ["Expected Costs", "Expected QALYs"];
-    //   //Excpected costs for Digital
-    //   const dECDigitalAeatHos = dDigAEATHpProb()*costDigitalAEAT();
-    //   const aECDigitalAeatHos = aDigAEATHpProb()*costDigitalAEAT();
-    //   const dECDigitalAeatNon = dDigAEATNonHpProb()*costDigitalAEATNon();
-    //   const aECDigitalAeatNon = aDigAEATNonHpProb()*costDigitalAEATNon();
-    //   const dECDigitalIeatHos = dDigIEATHpProb()*costDigitalIEAT();
-    //   const aECDigitalIeatHos = aDigIEATHpProb()*costDigitalIEAT();
-    //   const dECDigitalIeatNon = dDigIEATNonHpProb()*costDigitalIEATNon();
-    //   const aECDigitalIeatNon = aDigIEATNonHpProb()*costDigitalIEATNon();
-   
-    //   //Expected costs for Current Pathway
-    //   const dECCurrentPAeatHos = dCpAEATHpProb()*costCpAEAT();
-    //   const aECCurrentPAeatHos = aCpAEATHpProb()*costCpAEAT();
-    //   const dECCurrentPAeatNon = dCpAEATNonHpProb()*costCpAEATNon();
-    //   const aECCurrentPAeatNon = aCpAEATNonHpProb()*costCpAEATNon();
-    //   const dECCurrentPIeatHos = dCpIEATHpProb()*costCpIEAT();
-    //   const aECCurrentPIeatHos = aCpIEATHpProb()*costCpIEAT();
-    //   const dECCurrentPIeatNon = dCpIEATNonHpProb()*costCpIEATNon();
-    //   const aECCurrentPIeatNon = aCpIEATNonHpProb()*costCpIEATNon();
+    
     return(
         <div className="costModal-container">
             <table>
@@ -153,9 +155,46 @@ export default function TableCostModal(){
                                     : colIndex === 0 && (rowIndex === 15)
                                     ? aECCurrentPIeatNon().toFixed(4)
                                     : colIndex === 0 && (rowIndex === 16)
-                           
+                                    
+                                    // Digital Expected Cost QALYS
+                                    ? dECDigitalAeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 0 || rowIndex === 1)
+                                    ? aECDigitalAeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 2)
+                                    ? dECDigitalAeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 3)
+                                    ? aECDigitalAeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 4)
+                                    ? dECDigitalIeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 5)
+                                    ? aECDigitalIeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 6)
+                                    ? dECDigitalIeatNonQALYs().toFixed(4)                                    
+                                    : colIndex === 1 && (rowIndex === 7)
+                                    ? aECDigitalIeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 8)
+                            
+                                    //Current Pathway Expected QALYS
+                                    ? dECCurrentPAeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 9)
+                                    ? aECCurrentPAeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 10)
+                                    ? dECCurrentPAeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 11)
+                                    ? aECCurrentPAeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 12)
+                                    ? dECCurrentPIeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 13)
+                                    ? aECCurrentPIeatHosQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 14)
+                                    ? dECCurrentPIeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 15)
+                                    ? aECCurrentPIeatNonQALYs().toFixed(4)
+                                    : colIndex === 1 && (rowIndex === 16)
+                            
                                 }
                             </td>
+                          
                         ))}
                       </tr>
                     ))}
