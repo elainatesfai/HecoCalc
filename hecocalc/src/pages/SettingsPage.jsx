@@ -20,7 +20,6 @@ import { useState } from "react";
 
 export default function Settings() {
   const getRepo = useOutletContext().getRepo;
-  var repoName = useOutletContext().repoName;
   var repositories = getRepo();
   var choices = [];
   repositories.map((item) => {
@@ -34,11 +33,13 @@ export default function Settings() {
 
   const submitSettings = (event) => {
     event.preventDefault();
-    console.log(repoName);
+    console.log(localStorage.getItem("repoName"));
+    localStorage.setItem("s3Link", localStorage.getItem("company") + "/Repositories/" + localStorage.getItem("repoName"));
+    console.log(localStorage.getItem("s3Link"));
   };
 
   const selectValue = (event) => {
-    repoName = event.target.value;
+    localStorage.setItem("repoName", event.target.value);
   };
 
   return (

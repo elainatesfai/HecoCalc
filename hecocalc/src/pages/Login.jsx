@@ -76,6 +76,8 @@ function Login() {
 
           }
           else{
+            localStorage.setItem("company", details.UserAttributes[4].Value);
+            console.log(localStorage.getItem("company"));
             getRepositories().then(x => {
               console.log(x);
               navigate('/loginsettings');

@@ -6,11 +6,9 @@ import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import AWS from "aws-sdk";
 
 function App() {
-    var repoName = "";
     var repositories = [];
     var companies = [];
     var position = "";
-    localStorage.setItem("company", "");
     const authenticate = async (Username,Password) => {
       return await new Promise((resolve, reject) => {
         const user = new CognitoUser({Username,Pool});
@@ -132,7 +130,7 @@ function App() {
               }
               console.log(userData);
               if(userData.UserAttributes[2].Value !== '3'){
-                localStorage.setItem("company",userData.UserAttributes[4].Value);
+                localStorage.setItem("company", userData.UserAttributes[4].Value);
               }
               var idToken = session.idToken.jwtToken;
 
@@ -202,7 +200,6 @@ function App() {
         getRepositories: getRepositories,
         repositories: repositories,
         getRepo: getRepo,
-        repoName: repoName,
         getUserDetails: getUserDetails,
         position: position,
         companies: companies,

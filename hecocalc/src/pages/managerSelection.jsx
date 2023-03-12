@@ -21,6 +21,7 @@ export default function ManagerSelection(){
 
     const submitCompany = (event) => {
         event.preventDefault();
+        console.log(localStorage.getItem("company"));
         getRepositories().then(x => {
               console.log(x);
               navigate('/loginsettings');
