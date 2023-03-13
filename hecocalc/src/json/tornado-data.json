@@ -120,7 +120,7 @@
       "category": "High parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - IEAT - \n Current pathway (0.082 to 0.119)",
+      "yAxisLabel": "Hospital adm - IEAT - \nCurrent pathway (0.082 to 0.119)",
       "start": 1810,
       "end": 2262.20,
       "category": "Low parameter value"
@@ -168,7 +168,7 @@
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Hospital adm - AEAT \n- NeuroResponse (0.057 to 0.089)",
+      "yAxisLabel": "Hospital adm - AEAT - \nNeuroResponse (0.057 to 0.089)",
       "start": 1810,
       "end": 2869.06,
       "category": "High parameter value"
