@@ -9,6 +9,7 @@ import { useOutletContext } from "react-router-dom";
 import CompaniesSelect from "../components/CompaniesSelect";
 
 export default function Settings() {
+  const getRepositories = useOutletContext().getRepositories;
   const getRepo = useOutletContext().getRepo;
   var repositories = getRepo();
   var choices = [];
@@ -26,7 +27,6 @@ export default function Settings() {
     setToggleState(tab);
   };
   const getComp = useOutletContext().getComp;
-  const getRepositories = useOutletContext().getRepositories;
   var companies = getComp();
   var companyChoice = [];
   companies.map((item) => {
@@ -60,6 +60,24 @@ export default function Settings() {
   if(toggleState ==="Company"){
     activeTabComponent = CompaniesSelect(companyChoice);
     
+  }
+
+  const updateRepositories = () => {
+    getRepositories().then(x => {
+      repositories = getRepo();
+      var choices = [];
+     repositories.map((item) => {
+    let arr = item.Key.split("/");
+    if (arr.length > 0) {
+      if (choices.includes(arr[2]) === false && arr[2]!=='') {
+        choices.push(arr[2]);
+      }
+    }
+  });
+  toggleTab("Repository");
+
+  });
+
   }
 
 
@@ -101,7 +119,7 @@ export default function Settings() {
               : "tabs-topic"
             }
             onClick={() => {
-              toggleTab("Repository");
+              updateRepositories();
             }}
           >
             <p>Repository</p>
