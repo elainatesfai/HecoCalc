@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function ManagerSelection(){
+    localStorage.setItem("company",'');
     const navigate = useNavigate();
     const getComp = useOutletContext().getComp;
     const getRepositories = useOutletContext().getRepositories;
@@ -20,13 +21,14 @@ export default function ManagerSelection(){
     });
 
     const submitCompany = (event) => {
-        event.preventDefault();
-        console.log(localStorage.getItem("company"));
-        getRepositories().then(x => {
-              console.log(x);
-              navigate('/loginsettings');
-          });
-
+      event.preventDefault();
+        if(localStorage.getItem("company") !== 'Select' && localStorage.getItem("company")!==''){
+          console.log(localStorage.getItem("company"));
+          getRepositories().then(x => {
+                console.log(x);
+                navigate('/loginsettings');
+            });
+        }
     };
     
     const select = (event) => {
@@ -42,6 +44,7 @@ export default function ManagerSelection(){
           <div className="login-settings-form-div">
             <form>
               <select onChange={select}>
+                <option value='Select'>-Select-</option>
               {choices.map((item) => {
               return <option value={item}>{item}</option>;
                 })}

@@ -10,6 +10,9 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 
 function Uploads() {
   const [files, setFiles] = useState([]);
+  if(localStorage.getItem("s3Link")===''){
+    localStorage.setItem("s3Link","alancompany/Snapshots")
+  }
 
   const S3_BUCKET = process.env['REACT_APP_BUCKET_NAME'];
   const REGION = process.env['REACT_APP_REGION'];
@@ -29,7 +32,7 @@ function Uploads() {
     const params = {
       ACL: "public-read",
       Body: file,
-      Bucket: 'alancompany/alancompany/Snapshots',
+      Bucket: ('alancompany/' + localStorage.getItem("s3Link")),
       Key: file.name,
       Metadata: {
         'x-amz-meta-uploadedby': 'john@gmail.com',
