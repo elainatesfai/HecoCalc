@@ -15,6 +15,12 @@
       "yAxisLabel": "Effectiveness of NeuroResponse \n(0.881 to 0.918)",
       "start": 1669.34,
       "end": 1810,
+      "category": "Low parameter value"
+    },
+    {
+      "yAxisLabel": "Effectiveness of NeuroResponse \n(0.881 to 0.918)",
+      "start": 1810,
+      "end": 1900,
       "category": "High parameter value"
     },
     {
@@ -24,7 +30,7 @@
       "category": "Low parameter value"
     },
     {
-      "yAxisLabel": "Dead - AEAT \n(0.094 to 0.147)",
+      "yAxisLabel": "Dead - AEAT (0.094 to 0.147)",
       "start": 1810,
       "end": 1885.59,
       "category": "High parameter value"
