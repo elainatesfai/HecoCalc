@@ -10,12 +10,12 @@ export default function ManagerSelection(){
     const getComp = useOutletContext().getComp;
     const getRepositories = useOutletContext().getRepositories;
     var companies = getComp();
-    var choices = [];
+    var companyChoice = [];
     companies.map((item) => {
         let arr = item.Key.split("/");
         if(arr.length>0){
-            if(choices.includes(arr[0]) === false) {
-                choices.push(arr[0]);
+            if(companyChoice.includes(arr[0]) === false) {
+                companyChoice.push(arr[0]);
             }
         }
     });
@@ -45,7 +45,7 @@ export default function ManagerSelection(){
             <form>
               <select onChange={select}>
                 <option value='Select'>-Select-</option>
-              {choices.map((item) => {
+              {companyChoice.map((item) => {
               return <option value={item}>{item}</option>;
                 })}
               </select>

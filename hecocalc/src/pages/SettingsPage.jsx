@@ -19,7 +19,6 @@ import { useState } from "react";
 //   });
 
 export default function Settings() {
-  localStorage.setItem("repoName",'');
   const getRepo = useOutletContext().getRepo;
   var repositories = getRepo();
   var choices = [];

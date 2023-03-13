@@ -37,6 +37,7 @@ function AppRouter() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Login />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/loginsettings" element={<LoginSettings />} />
           <Route path="/managerselect" element={<ManagerSelection />} />
           <Route
@@ -70,7 +71,6 @@ function AppRouter() {
           />
         </Route>
         <Route path="/snapshots" element={<Snapshots />} />
-        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   );
