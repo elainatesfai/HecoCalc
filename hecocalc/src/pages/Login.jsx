@@ -71,19 +71,24 @@ function Login() {
           localStorage.setItem("repoName", '');
           localStorage.setItem("s3Link", '');
           position = details.UserAttributes[2].Value;
+          localStorage.setItem("position", position);
           if(position === '3'){
+            localStorage.setItem("startSettings","Company");
             getCompanies().then(x => {
               console.log(x);
-              navigate('/managerselect');
+              navigate('/settings');
             })
 
           }
           else{
             localStorage.setItem("company", details.UserAttributes[4].Value);
+            localStorage.setItem("repoName", '');
+            localStorage.setItem("s3Link", '');
+            localStorage.setItem("startSettings","Repository");
             console.log(localStorage.getItem("company"));
             getRepositories().then(x => {
               console.log(x);
-              navigate('/loginsettings');
+              navigate('/settings');
           });
 
           }
