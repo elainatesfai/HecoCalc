@@ -12,8 +12,7 @@
 }
 
 .settings-tab-container {
-  /* margin-top: 1rem;
-  border-top: none; */
+
 }
 
 .settings-topline-small {
@@ -21,8 +20,7 @@
   font-weight: bold;
   margin: 0;
   margin-bottom: 0.5rem;
-  /* left: 0; */
-  /* right: 0; */
+
   padding-left: 0;
   width: 170px;
 }
@@ -82,7 +80,6 @@
   display: block;
   width: 60%;
   margin: 0;
-  /* padding: 0.5rem; */
   font-size: 1rem;
   font-weight: bold;
   color: black;

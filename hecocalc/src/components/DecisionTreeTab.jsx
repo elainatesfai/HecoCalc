@@ -18,7 +18,7 @@ function DecisionTreeTab() {
     });
 
     // get all objects in the treespec folder
-    s3.listObjectsV2({ Bucket: s3Bucket, Prefix: 'TreeSpecs' }, (err, data) => {
+    s3.listObjectsV2({ Bucket: s3Bucket, Prefix: 'alancompany/TreeSpecs' }, (err, data) => {
       if (err) {
         console.log(err);
       } else {
@@ -27,6 +27,8 @@ function DecisionTreeTab() {
       }
     });
   }, []);
+
+  console.log(treeFiles);
 
   return (
     <div className='settings-tab-container'>

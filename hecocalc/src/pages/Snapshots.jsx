@@ -61,6 +61,14 @@ function filterDataByStatus(status, data) {
   }
 }
 
+// filter by search
+function filterBySearch(searchTerm, data) {
+  return data.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+}
+
+
 function Snapshots(props) {
   const [searchTerm, setSearchTerm] = useState("");
   const [toggleState, setToggleState] = useState("All");
@@ -68,19 +76,19 @@ function Snapshots(props) {
   // Declaring role
   const [userRole, setUserRole] = useState("analyst"); // new state for user role
   
-  const setCloseClass = useState("Close Unclicked");
-  const setLoginModalClass = useState("Modal Hidden");
-  const [isModalClicked, setIsModalClicked] = useState(false);
+  // const setCloseClass = useState("Close Unclicked");
+  // const setModalClass = useState("Modal Hidden");
+  // const [isModalClicked, setIsModalClicked] = useState(false);
 
-  const updateModal = () => {
-    if (!isModalClicked) {
-      setCloseClass("Close Clicked");
-      setLoginModalClass("Modal Visible");
-    } else {
-      setCloseClass("Close Unlicked");
-      setLoginModalClass("Modal Hidden");
-    }
-  };
+  // const updateModal = () => {
+  //   if (!isModalClicked) {
+  //     setCloseClass("Close Clicked");
+  //     setModalClass("Modal Visible");
+  //   } else {
+  //     setCloseClass("Close Unlicked");
+  //     setModalClass("Modal Hidden");
+  //   }
+  // };
 
   const toggleTab = (status) => {
     setToggleState(status);
@@ -116,15 +124,19 @@ function Snapshots(props) {
           <div className="header-title">My snapshots</div>
 
           
-          {userRole === "analyst" ? ( // display button only for analyst role
+          {/* {userRole === "analyst" ? ( // display button only for analyst role
             <button
               className="button-generate"
               onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
             >
               Upload
             </button>
-          ) : null} {/* don't display button for manager role */}
+          ) : null} don't display button for manager role */}
+        </div> 
 
+        <div class="search-bar">
+          <i class="fas fa-search"/>
+          <input type="text" placeholder="Search..."/>
         </div>
 
         <div className="bloc-tabs-topic">
@@ -157,43 +169,6 @@ function Snapshots(props) {
       <Table data={sortedData}  />
       {/* ... */}
       </div>
-
-      <form
-        id="upload-modal"
-        className={isModalClicked ? "modal" : "modal-hidden"}
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <span
-              className="close"
-              onClick={() => updateModal(setIsModalClicked(!isModalClicked))}
-            >
-              {/* &times; */}
-              <i className='fas fa-close' />
-            </span>
-            <h2>Save Snapshots</h2>
-          </div>
-          <div className="modal-body">
-            <p>PDFs will be saved locally, snaphots will be submitted to S3.</p>
-            <div className="modal-input-container">
-            <input id="file-input" name="file" placeholder="Enter snapshot name..."/>
-              {/* <input type="text" id="file-input" name="file" placeholder="Enter snapshot name..." /> */}
-            </div>
-            <div className="modal-btn-container">
-              <button
-                className="modal-btn"
-              >
-                Submit Snapshot
-              </button>
-              <button
-                className="modal-btn"
-              >
-                Save as PDF
-              </button>
-            </div>
-          </div>
-        </div>
-      </form>
 
     </>
   )
