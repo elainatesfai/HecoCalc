@@ -67,6 +67,9 @@ function Login() {
     .then(data => {
       getUserDetails()
         .then(details => {
+          localStorage.setItem("company",'');
+          localStorage.setItem("repoName", '');
+          localStorage.setItem("s3Link", '');
           position = details.UserAttributes[2].Value;
           if(position === '3'){
             getCompanies().then(x => {

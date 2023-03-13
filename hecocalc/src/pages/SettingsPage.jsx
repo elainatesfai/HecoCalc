@@ -19,13 +19,14 @@ import { useState } from "react";
 //   });
 
 export default function Settings() {
+  localStorage.setItem("repoName",'');
   const getRepo = useOutletContext().getRepo;
   var repositories = getRepo();
   var choices = [];
   repositories.map((item) => {
     let arr = item.Key.split("/");
     if (arr.length > 0) {
-      if (choices.includes(arr[2]) === false) {
+      if (choices.includes(arr[2]) === false && arr[2]!=='') {
         choices.push(arr[2]);
       }
     }
@@ -33,13 +34,18 @@ export default function Settings() {
 
   const submitSettings = (event) => {
     event.preventDefault();
-    console.log(localStorage.getItem("repoName"));
-    localStorage.setItem("s3Link", localStorage.getItem("company") + "/Repositories/" + localStorage.getItem("repoName"));
-    console.log(localStorage.getItem("s3Link"));
+    if(localStorage.getItem("repoName") !== 'Select' && localStorage.getItem("repoName") !== ''){
+      console.log(localStorage.getItem("repoName"));
+      localStorage.setItem("s3Link", localStorage.getItem("company") + "/Repositories/" + localStorage.getItem("repoName"));
+      console.log(localStorage.getItem("s3Link"));
+    }
   };
 
   const selectValue = (event) => {
-    localStorage.setItem("repoName", event.target.value);
+    if(event.target.Value !== 'Select'){
+      localStorage.setItem("repoName", event.target.value);
+
+    }
   };
 
   return (
@@ -49,6 +55,7 @@ export default function Settings() {
       <div className="login-settings-form-div">
         <form>
           <select onChange={selectValue}>
+            <option value='Select'>-Select-</option>
             {choices.map((item) => {
               return <option value={item}>{item}</option>;
             })}
